@@ -1,0 +1,19 @@
+# Hito 1: Repositorio de pácticas y definición del proyecto.
+En este hito se explican los pasos seguidos para la creación y configuración del repositorio de prácticas, y se define el problema del proyecto y la solución planteada.
+
+# Creación y configuración de la cuenta de Github
+  # Ajustes del perfil de usuario
+  # Creación del par de claves SSH pública/privada
+  # Activación del segundo factor de autenticación
+
+# Clonación del repositorio
+
+# Creacion y documentacion del repositorio Artigow
+  # Configuración inicial
+En este apartado se detallan todos los pasos seguidos para la correcta creación y configuración del repositorio git, que se utilizará principalmente para controlar las versiones del desarollo y para realizar las entregas de cada hito.
+Una vez configurada la cuenta e iniciado sesión en Github, desde el home de la cuneta de usuario, se observa un botón para crear el primer repositorio.
+(poner imagen)
+Una vez que pulsamos el botón, nos pedirá personalizar la configuración inicial del repositorio.
+Para ello debemos poner un nombre, una descripción, seleccionar si el repositorio será público o privado (en este caso público), indicamos que queremos añadir un archivo README.md y escogemos una licencia para nuestro proyecto.
+  # Licencia
+  # Creación del archivo gitignore
