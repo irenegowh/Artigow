@@ -3,10 +3,16 @@ En este hito se explican los pasos seguidos para la creación y configuración d
 
 # Creación y configuración de la cuenta de Github
   # Ajustes del perfil de usuario
+  Desde la interfaz de Github, se pueden configurar los ajustes del perfil público de nuestra cuenta de Github. 
+  Desde esta sección se ha añadido: 
+  - Nombre y apellidos del usuario.
+  - Dirección de correo pública.
+  - Localidad.
+  - Compañía (En este caso, estudiante de la Universidad de Granada).
+  - Imagen del perfil.
+  
   # Creación del par de claves SSH pública/privada
   # Activación del segundo factor de autenticación
-
-# Clonación del repositorio
 
 # Creacion y documentacion del repositorio Artigow
   # Configuración inicial
@@ -17,6 +23,8 @@ Una vez que pulsamos el botón, nos pedirá personalizar la configuración inici
 Para ello debemos poner un nombre, una descripción, seleccionar si el repositorio será público o privado (en este caso público), indicamos que queremos añadir un archivo README.md y escogemos una licencia para nuestro proyecto.
   # Licencia
   # Creación del archivo gitignore
+
+# Clonación del repositorio
 # Definicion del problema
 Artigow, es una aplicación pensada para proporcionar a los artistas una plataforma para compartir y dar a conocer sus obras en categorías especificas. 
 Además, los propios artistas podrán votar las obras más originales generando un ranking basado en los resultados y la aceptación de las distintas obras dentro de la comunidad.
