@@ -12,6 +12,8 @@ En este hito se explican los pasos seguidos para la creación y configuración d
   - Imagen del perfil.
   
   # Creación del par de claves SSH pública/privada
+Con el fin de mantener una comunicación segura entre el usuario y el servidor, se han generado el par de claves SSH publica/privada.
+  
   # Activación del segundo factor de autenticación
 
 # Creacion y documentacion del repositorio Artigow
