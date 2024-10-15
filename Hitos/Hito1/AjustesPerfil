@@ -1,32 +1,36 @@
-# Creación y configuración de la cuenta de Github
-  # Ajustes del perfil de usuario
-  Desde la interfaz de Github, se pueden configurar los ajustes del perfil público de nuestra cuenta de Github. 
-  Desde esta sección se ha añadido: 
-  - Nombre y apellidos del usuario.
-  - Dirección de correo pública.
-  - Localidad.
-  - Compañía (En este caso, estudiante de la Universidad de Granada).
-  - Imagen del perfil.
+# Creación y configuración de la cuenta de GitHub
 
-  Por otro lado, desde git bash, se ha configurado el nombre y email de los commits.
-Para ellos, se han ejecutado los comando:
+## Ajustes del perfil de usuario
+Desde la interfaz de GitHub, se pueden configurar los ajustes del perfil público de nuestra cuenta. Se han añadido:
+
+- **Nombre y apellidos**: Irene Gosálvez White
+- **Dirección de correo pública**: irenegwh@correo.ugr.es
+- **Localidad**
+- **Compañía**: Estudiante de la Universidad de Granada
+- **Imagen del perfil**
+
+Además, desde Git Bash, se ha configurado el nombre y el email de los commits con los siguientes comandos:
+
+```bash
 $ git config --global user.name "Irene Gosálvez White"
 $ git config --global user.email "irenegwh@correo.ugr.es"
 
-# Creación del par de claves SSH pública/privada
-Con el fin de mantener una comunicación segura entre el usuario y el servidor, se han generado el par de claves SSH publica/privada.
-Para ello, primero hemos generado el par de claves en el ordenador que se va a utilizar desde git bash. 
 
-Se generó el archivo en el diretorio .ssh/, y se puso una passphrase.
+# Creación del par de claves SSH pública/privada
+Para mantener una comunicación segura entre el usuario y el servidor, se generó un par de claves SSH (pública/privada).
+
+Primero, desde Git Bash, se generó el par de claves con el siguiente comando:
 $ ssh-keygen -t ed25519 -C "irenegwh@correo.ugr.es"
-Después se añadieron las claves al ssh-agent, desde PowerShell:
+El archivo se generó en el directorio .ssh/ y se añadió una passphrase.
+
+Después, se añadieron las claves al ssh-agent desde PowerShell:
 Get-Service -Name ssh-agent | Set-Service -StartupType Manual
 Start-Service shh-agent
 
-Una vez generado, lo copiamos para añadirlo en la configuracio nde nuestra cuenta de GitHub desde Ajustes>SSH and GPG keys.
-Primero se copia con:
+Luego, se copió la clave pública y se añadió en GitHub (Ajustes > SSH and GPG keys):
 $ clip < ubicacion del archivo con la clave pública.
-Se añade la clave copiada, poniendo el nombre que queramos para saber a que dispositivo corresponde y seleccioanmos el tipo de clave (en este caso Authentication key)
+Se añadió la clave copiada, asignándole un nombre que identifique el dispositivo y seleccionando "Authentication key".
 
 # Activación del segundo factor de autenticación
-
+Para activar el doble factor de autenticación, se fue a la configuración de la cuenta en Settings > Password and authentication > Two-factor authentication.
+En este caso, se activó el método "Authentication App", configurando la cuenta para que el código se genere desde una app externa (Google Authenticator).
