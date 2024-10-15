@@ -2,7 +2,7 @@
 # Configuración inicial
 En este apartado se detallan todos los pasos seguidos para la correcta creación y configuración del repositorio git, que se utilizará principalmente para controlar las versiones del desarollo y para realizar las entregas de cada hito.
 Una vez configurada la cuenta e iniciado sesión en Github, desde el home de la cuneta de usuario, se observa un botón para crear el primer repositorio.
-(poner imagen)
+
 Una vez que pulsamos el botón, nos pedirá personalizar la configuración inicial del repositorio.
 Para ello debemos poner un nombre, una descripción, seleccionar si el repositorio será público o privado (en este caso público), indicamos que queremos añadir un archivo README.md y escogemos una licencia para nuestro proyecto.
   
@@ -12,3 +12,11 @@ Hay distintos tipos de licencia, en mi caso he escogido la licencia tipo MIT. Es
 # Creación del archivo gitignore
 
 # Clonación del repositorio
+Seleccion de la creacion del archivo README.md
+Creación de la licencia.
+Sin plantilla para el archivo gitignore.
+
+
+Para tener el repositorio en local en nuestro ordenador tenemos que clonarlo. Para ello se usa el comando:
+```bash
+git clone nombre_repositorio
