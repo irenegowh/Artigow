@@ -37,17 +37,19 @@ Get-Service -Name ssh-agent | Set-Service -StartupType Manual
 Start-Service shh-agent
 ssh-add */.ssh/id_ed25519
 ```
-![Configuracion del perfil público](./configperfil/inicioagente.png)
-![Configuracion del perfil público](./configperfil/claveagente.png)
+![Activacion del agente](./configperfil/inicioagente.png)
+![Clave añadida al agente](./configperfil/claveagente.png)
 
 Luego, se copió la clave pública y se añadió en GitHub (Ajustes > SSH and GPG keys):
 ```bash
 $ clip < ubicacion del archivo con la clave pública.
 ```
-![Configuracion del perfil público](./configperfil/copiaclavepub.png)
+![Copia de la clave](./configperfil/copiaclavepub.png)
 
 Se añadió la clave copiada, asignándole un nombre que identifique el dispositivo y seleccionando "Authentication key".
+![Clave SSH añadida](./configperfil/claveaddedfil.png)
 
 # Activación del segundo factor de autenticación
 Para activar el doble factor de autenticación, se fue a la configuración de la cuenta en Settings > Password and authentication > Two-factor authentication.
 En este caso, se activó el método "Authentication App", configurando la cuenta para que el código se genere desde una app externa (Google Authenticator).
+![Configuracion del segundo factor de autenticación](./configperfil/factor2.png)
