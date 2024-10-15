@@ -7,11 +7,15 @@
   - Localidad.
   - Compañía (En este caso, estudiante de la Universidad de Granada).
   - Imagen del perfil.
-  
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/aee9bd73-0da4-4847-bf73-22e35654703a/aea89f7e-69dc-45e0-b59c-f6cdbd36af26/image.png)
+
+  Por otro lado, desde git bash, se ha configurado el nombre y email de los commits.
+Para ellos, se han ejecutado los comando:
+$ git config --global user.name "Irene Gosálvez White"
+$ git config --global user.email "irenegwh@correo.ugr.es"
 
 # Creación del par de claves SSH pública/privada
 Con el fin de mantener una comunicación segura entre el usuario y el servidor, se han generado el par de claves SSH publica/privada.
-  
-  # Activación del segundo factor de autenticación
+Para ello, 
+
+# Activación del segundo factor de autenticación
 
