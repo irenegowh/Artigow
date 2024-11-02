@@ -7,6 +7,6 @@ La explicación de este hito se ha divido en tres apartados principales, que se 
 
 [2. Creación y configuración del respositorio.](Hitos/Hito1/ConfiguracionRepositorio.md)
 
-[3. Definición del problema.](Hitos/Hito1/DefinicionRoyecto.md)
+[3. Definición del problema.](Hitos/Hito1/DefinicionProyecto.md)
 
 
