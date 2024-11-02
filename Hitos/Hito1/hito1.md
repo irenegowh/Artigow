@@ -3,10 +3,10 @@ En este hito se explican los pasos seguidos para la creación y configuración d
 
 La explicación de este hito se ha divido en tres apartados principales, que se pueden leer en los siguientes enlaces:
 
-[1. Ajustes del perfil.](Hitos/Hito1/AjustesPerfil.md)
+[1. Ajustes del perfil.](./AjustesPerfil.md)
 
-[2. Creación y configuración del respositorio.](Hitos/Hito1/ConfiguracionRepositorio.md)
+[2. Creación y configuración del respositorio.](./ConfiguracionRepositorio.md)
 
-[3. Definición del problema.](Hitos/Hito1/DefinicionProyecto.md)
+[3. Definición del problema.](./DefinicionProyecto.md)
 
 
