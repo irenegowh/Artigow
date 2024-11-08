@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
 flask-wtf = "*"
@@ -13,6 +12,7 @@ flask-login = "*"
 bcrypt = "*"
 pillow = "*"
 flask-mail = "*"
+flask = "*"
 
 [dev-packages]
 pytest = "*"
