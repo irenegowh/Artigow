@@ -1,6 +1,5 @@
 name: Test
 
-# preliminaries
 on:
   push:
     branches:
@@ -13,18 +12,19 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    steps: # Check out the code
+    steps:
     - uses: actions/checkout@v3
 
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.12'  
+        python-version: '3.12'
 
-   # - name: Install dependencies
-   #   run: |
-   #   pip install pipenv
-   #     pipenv install --dev
+    - name: Install pipenv
+      run: pip install pipenv
+
+    - name: Install dependencies
+      run: pipenv install --dev
 
     - name: Run tests
       run: pipenv run pytest --junitxml=report.xml
