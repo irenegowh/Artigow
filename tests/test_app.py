@@ -1,7 +1,7 @@
 # tests/test_app.py
 import pytest
 import os
-from app import app
+from app.main import app
 
 @pytest.fixture
 def client():
