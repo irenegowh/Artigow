@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artigow</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_artigow.css') }}">
+</head>
+<body>
+    <h1>Artigow</h1>
+    <nav>
+        <a href="{{ url_for('main.welcome') }}">Ir a página de inicio</a>
+        <a href="{{ url_for('main.new_post') }}">Crear nueva publicación</a>
+    </nav>
+    <h2>Lista de Publicaciones</h2>
+    
+    {% if posts %}
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <h2>{{ post.title }}</h2>
+                    <h3>Usuario ID: {{ post.user_id }}</h3>
+                    <p>{{ post.content }}</p>
+                    
+                    {% if post.image_url %}
+                        <p><img src="{{ url_for('static', filename=post.image_url) }}" alt="Imagen de la publicación" width="200"></p>
+                    {% else %}
+                        <p>No hay imagen</p>
+                    {% endif %}
+                    <p><strong>Date:</strong> {{ post.date_posted }}</p>
+                    <p><strong>url:</strong> {{ post.image_url }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay publicaciones disponibles.</p>
+    {% endif %}
+   
+</body>
+</html>

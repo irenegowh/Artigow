@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Artigow</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_artigow.css') }}">
+</head>
+<body>
+    <h1>Artigow</h1>
+     <nav>
+        <a href="{{ url_for('main.welcome') }}">Ir a página de inicio</a>
+        <a href="{{ url_for('main.list_posts') }}">Ver lista de publicaciones</a>
+    </nav>
+
+    <h2>Crear nueva publicación</h2>
+    <form action="/new_post" method="post" enctype="multipart/form-data">
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="content">Contenido:</label>
+        <textarea id="content" name="content" required></textarea><br><br>
+
+        <label for="image">Imagen:</label>
+        <input type="file" name="image" id="image" accept="image/*"><br><br>
+
+        <label for="user_id">ID del usuario:</label>
+        <input type="string" id="user_id" name="user_id" required><br><br>
+
+        <button type="submit">Crear publicación</button>
+    </form>
+   </body>
+</html>

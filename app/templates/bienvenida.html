@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artigow</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_artigow.css') }}">
+</head>
+<body>
+    <h1>Artigow</h1>
+    <nav>
+        <a href="{{ url_for('main.list_posts') }}">Ver lista de publicaciones</a>
+        <a href="{{ url_for('main.new_post') }}">Crear nueva publicación</a>
+    </nav>
+    <h2>Bienvenido a Artigow!</h2>
+    
+</body>
+</html>

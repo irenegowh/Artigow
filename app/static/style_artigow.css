@@ -1,0 +1,49 @@
+/* Estilos Generales */
+body {
+  background-color: #fffffe;
+  font-family: Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Estilos para el Título (h1) */
+h1 {
+  background-color: #682034; /* Fondo del título */
+  color: #ffffff; /* Color del texto */
+  text-align: center;
+  padding: 20px;
+  font-size: 2.5em;
+  margin: 0;
+  border-bottom: 4px solid #754961;
+}
+
+/* Estilos para el Subtítulo (h2) */
+h2 {
+  color: #754961;
+  text-align: left;
+  margin: 20px;
+  font-size: 1.8em;
+}
+
+/* Estilos para el Menú de Navegación */
+nav {
+  background-color: #682034;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+nav a {
+  color: #fffffe;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #754961;
+}
