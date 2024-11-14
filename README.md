@@ -9,3 +9,4 @@ El objetivo principal es ofrecer una plataforma para fomentar la interacción ar
 
 # Hitos del desarrollo del proyecto
 [Hito 1: Repositorio de pácticas y definición del proyecto.](Hitos/Hito1/hito1.md)
+[Hito 2: Integración continua.](Hitos/Hito2/Hito2.md)
