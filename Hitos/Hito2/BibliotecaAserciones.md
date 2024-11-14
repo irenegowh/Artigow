@@ -36,7 +36,7 @@ La aplicación fue configurada para retornar un mensaje de bienvenida, como se m
 
 Al ejecutar la prueba inicial, surgió un error de importación. Este problema se solucionó añadiendo el archivo __init__.py en el directorio tests, permitiendo que Pytest reconozca el directorio como un paquete Python.
 
-![Error de importación solucionado con __init__.py](./imagenes/TestNotPassed1.jpg)
+![Error de importación solucionado con __init__.py](./imagenes/TestNotPassed1.png)
 
 ## 5. Ejecución exitosa de la prueba
 
