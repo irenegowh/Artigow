@@ -36,7 +36,7 @@ Además de las pruebas exitosas, se incluyen ejemplos de pruebas que presentaron
 
 ![prueba1exito](imagenes/pruebaerror2.png)
 
-![testFile2](imagenes/TestFile1.png)
+![TestFile2](imagenes/testfile1.png)
 
 ## 2. Pruebas para la funcionalidad de creación de votaciones.
 
@@ -61,7 +61,7 @@ Crea un post con el título "Test Post" y el contenido "Test Content". Guarda es
 Usa el cliente de prueba para enviar una solicitud `POST` a la ruta `/show_post/<post_id>`.
 Asegura que la respuesta tenga un código de estado **200** (éxito). Comprueba que tanto el título "Test Post" como el contenido "Test Content" aparezcan en los datos de la respuesta. Se asegura de que no aparezca el mensaje de error "Post no encontrado".
 
-![testFile2](imagenes/TestFile2.png)
+![testFile2](imagenes/testfile2.png)
 
 Se testeo usando pytest hasta que finalmente se ejecutaron con éxito todas las pruebas y sin warnings.
 
