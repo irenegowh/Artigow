@@ -11,6 +11,7 @@
     <nav>
         <a href="{{ url_for('main.welcome') }}">Ir a página de inicio</a>
         <a href="{{ url_for('main.new_post') }}">Crear nueva publicación</a>
+        <a href="{{ url_for('main.ranking') }}">Ranking posts</a>
     </nav>
     <h2>Lista de Publicaciones</h2>
     
@@ -29,6 +30,9 @@
                     {% endif %}
                     <p><strong>Date:</strong> {{ post.date_posted }}</p>
                     <p><strong>url:</strong> {{ post.image_url }}</p>
+                    <form method="post" action="{{ url_for('main.vote_post', post_id=post.id) }}">
+                        <button type="submit">Votar</button>
+                    </form>
                 </li>
             {% endfor %}
         </ul>

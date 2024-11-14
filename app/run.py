@@ -1,6 +1,7 @@
 import os
 from app import create_app, db
 from app.models import Post  # Asegúrate de importar el modelo Post
+from app.models import Vote  # Asegúrate de importar el modelo Post
 
 app = create_app()
 
@@ -12,6 +13,7 @@ with app.app_context():
 def delete_all_posts():
     with app.app_context():  # Usa el contexto de la aplicación
         posts = Post.query.all()
+        votes = Vote.query.all()
 
         for post in posts:
             if post.image_url:
@@ -28,6 +30,7 @@ def delete_all_posts():
 
         # Eliminar todos los registros de la tabla 'posts'
         Post.query.delete()
+        Vote.query.delete()
         db.session.commit()
         return "Todos los posts han sido eliminados.", 200
 
