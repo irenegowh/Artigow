@@ -28,9 +28,9 @@ Se añadió una prueba inicial en el archivo test_app.py para validar que Pytest
 
 La aplicación fue configurada para retornar un mensaje de bienvenida, como se muestra en la siguiente captura:
 
-![App inicial](imagenes/AppInicial.jpg)
+![App inicial](imagenes/AppInicial.png)
 
-![Test inicial](imagenes/TestInicial.jpg)
+![Test inicial](imagenes/TestInicial.png)
 
 ##4. Ejecución y resolución de errores de importación
 
@@ -42,4 +42,4 @@ Al ejecutar la prueba inicial, surgió un error de importación. Este problema s
 
 Finalmente, la prueba fue ejecutada correctamente y se mostró el mensaje "1 passed" en los resultados, indicando que el entorno de pruebas y la configuración inicial son funcionales:
 
-![Test pasado exitosamente](imagenes/TestPassed1.jpg)
+![Test pasado exitosamente](imagenes/TestPassed1.png)
