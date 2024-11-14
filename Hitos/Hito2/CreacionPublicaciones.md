@@ -37,7 +37,7 @@ Función: Los esquemas (schemas) definen la estructura de los datos que se enví
 - bienvenida.html: Una plantilla HTML que probablemente muestra un mensaje de bienvenida a los usuarios.
 - lists_posts.html: Una plantilla HTML que posiblemente se utiliza para mostrar una lista de publicaciones (o posts), mostrando el contenido que los usuarios han subido.
 
-##3. Lógica de la gestión de publicaciones y otros pasos iniciales
+## 3. Lógica de la gestión de publicaciones y otros pasos iniciales
 1. run.py
 
 Este archivo run.py configura y ejecuta la aplicación de Flask y proporciona una ruta para eliminar todas las publicaciones y votos en la base de datos, además de borrar las imágenes asociadas a las publicaciones. 
