@@ -20,7 +20,7 @@ Primero se crearon los directorios que se iban a necesitar para la aplicación.
 
 ![Árbol de directorios de la aplicación](imagenes/tree1.png)
 
-- **__init__.py:** En todos los directorios se encuentra el archivo __init__.py cuya función es convertir la carpeta en un paquete Pyton, y permite importar módulos de la carpeta en la que se encuentra en otros archivos del proyecto.
+- **__init__.py:** En todos los directorios se encuentra el archivo __init__.py cuya función es convertir la carpeta en un paquete Python, y permite importar módulos de la carpeta en la que se encuentra en otros archivos del proyecto.
 - **pycache** Esta carpeta es creada automáticamente por Python para almacenar archivos de caché compilados (.pyc). Mejora el rendimiento al evitar recompilar archivos Python cada vez que se ejecutan.
 - **core:** En esta carpeta generalmente se encuentran configuraciones y funcionalidades centrales que usa toda la aplicación. Esto puede incluir la configuración de la base de datos, la gestión de autenticación, o el manejo de permisos y configuraciones de la aplicación (variables de entorno, parámetros globales).
 - **instance:** Esta carpeta suele usarse para almacenar archivos específicos de la instancia de la aplicación, como configuraciones de producción o desarrollo. En Flask, por ejemplo, instance puede contener archivos de configuración o bases de datos que no están incluidas en el código fuente principal.
