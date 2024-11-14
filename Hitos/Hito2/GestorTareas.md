@@ -20,7 +20,7 @@ Primero, se creó un archivo `makefile` en el directorio raíz del repositorio u
     test:
     pipenv run pytest
 ```
-![Makefile](imagenes/Makefile.png)
+![Makefile](imagenes/makefile.png)
 
 Este comando ejecuta las pruebas definidas mediante pytest dentro del entorno virtual gestionado por pipenv.
     
