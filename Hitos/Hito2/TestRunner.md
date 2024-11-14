@@ -5,7 +5,7 @@ Para automatizar la ejecución de pruebas en cada commit o pull request y genera
 Como se está utilizando Github para gestionar el repostorio del proyecto, se ha decidido utilizar Github Actions como test runner, que viene integrado directamente en la plataforma, por lo que la configuración es más sencilla y da acesso a los resultados sin necesidad de integraciones de terceros.
 Además, permite ver los resultados y logs de ejecución directamente desde la pesataña "Actions", permite definir flujos de trabajo detallados, y los workflows son fácilmente configurables y soportan múltiples eventos como commits, pull reques y otros.
 
-![Pantalla actions](iamgenes/actions.png)
+![Pantalla actions](imagenes/actions.png)
 
 Para configurarlo, se creó la carpeta workflows con el comando:
 
