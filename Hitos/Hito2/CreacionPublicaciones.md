@@ -37,7 +37,7 @@ Primero se crearon los directorios que se iban a necesitar para la aplicación.
 
 ## 3. Lógica de la gestión de publicaciones y otros pasos iniciales
 1. run.py
-2. 
+
 Este archivo configura y ejecuta la aplicación de Flask y proporciona una ruta para eliminar todas las publicaciones y votos en la base de datos, además de borrar las imágenes asociadas a las publicaciones. 
 
 ![run](imagenes/run.png)
