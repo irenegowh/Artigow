@@ -6,6 +6,7 @@ Para integrar esta funcionalidad, se ha configurado GitHub Actions para ejecutar
 Es importante mencionar que la funcionalidad de login y la gestión de usuarios se han reservado para el próximo hito, lo cual permite centrar este hito en la configuración de la estructura base de integración continua y en las primeras interacciones con la gestión de publicaciones.
 
 A continuación, se detallan las distintas fases de este hito:
+
 [1. Configuración del gestor de dependencias.](./GestorDependencias.md)
 
 [2. Configuración del gestor de tareas para ejecutar pruebas.](./GestorTareas.md)
