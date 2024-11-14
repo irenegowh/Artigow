@@ -1,6 +1,9 @@
 # Configuración del sistema de integración continua.
 
-## 1. Prueba del sistema de integración continua (Explicación de la configuración en el apartado anterior [4. Selección y configuración del test runner.](./TestRunner.md)).
+## 1. Prueba del sistema de integración continua 
+
+(Explicación de la configuración en el apartado anterior [4. Selección y configuración del test runner.](./TestRunner.md)).
+
 Para probar que el sistema de integración continua (CI) configurado con GitHub Actions se ejecuta correctamente, se realizaron los siguientes pasos con Git:
 
 Añadir cambios:
