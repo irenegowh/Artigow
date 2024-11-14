@@ -46,6 +46,6 @@ Y, finalmente, ejecuta el Makefile con el siguiente comando:
   make test
   ```
 
-  ![](imagenes/Pruebatestmake.png)
+  ![Prueba inicial de la ejecución del makefile](imagenes/Pruebatestmake.png)
   
  En este caso, aunque el Makefile se ejecuta correctamente, muestra un error. Esto es normal porque aún no se han definido pruebas en el proyecto. En los siguientes pasos, se agregarán pruebas unitarias, lo que permitirá que esta tarea se ejecute correctamente.
