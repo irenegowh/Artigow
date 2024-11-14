@@ -8,7 +8,7 @@ En este apartado se explica la primera parte desarrollada de la aplicación en l
 
 - Funcionalidad de listado de publicaciones disponibles
 
-- Pagina para borrar todos los post (de prueba, posteriormente cuando se implementé la funcionalidad de login y se pueda distinguir entre usuarios con privilegios y sin privilegios se añadirá una funcionalidad especifica para borrar post de manera individual).
+- Ruta para borrar todos los post (de prueba, posteriormente cuando se implementé la funcionalidad de login y se pueda distinguir entre usuarios con privilegios y sin privilegios se añadirá una funcionalidad especifica para borrar post de manera individual).
 
 ## 1. Lógica general de la aplicación
 
