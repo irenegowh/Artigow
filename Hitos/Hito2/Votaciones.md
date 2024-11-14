@@ -5,12 +5,15 @@ Se han añadido los ficheros:
 
 ## 1. Estructura archivos nuevos
 - list_votes.html
+  
 ![List Votes. html](imagenes/list_voteshtml.png)
 
 - votes.py
+  
 ![votesmodel](imagenes/votesmodel.png)
 
 - show_post.html
+  
 ![Show Post. html](imagenes/showpost1html.png)
 
 
