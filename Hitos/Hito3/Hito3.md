@@ -14,3 +14,17 @@ Pruebas Automatizadas: Se han diseñado y ejecutado pruebas exhaustivas para ver
 
 Esta reestructuración no solo mejora la mantenibilidad y escalabilidad de la aplicación, sino que también la prepara para integrarse en entornos de producción y soportar un flujo de trabajo basado en CI/CD.
 
+[1. Justificación del framework.](./FrameworkApi.md)
+
+[2. Microservicios y estructura de la API](./Microservicios.md)
+
+[3. Estructura general de la aplicación: Blueprints, Repositorios y Servicios.](./EstructuraAPI.md)
+
+[4. Gestión de logs (logging). ](./GestionLogs.md)
+
+[5. Pruebas](./PruebasH3.md)
+
+[6. Demostración funcionalidades añadidas de Artigow](./FuncionalidadesH3.md)
+
+
+
