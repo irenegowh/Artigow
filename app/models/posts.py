@@ -10,7 +10,7 @@ class Post(db.Model):
     title = db.Column(db.String(100), nullable=False)
     content = db.Column(db.Text, nullable=False)
     image_url = db.Column(db.String(255), nullable=True)
-    user_id = db.Column(db.String(255), nullable=False)
+    user_name = db.Column(db.String(255), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.now(timezone.utc))
 
     # Relación con los votos
@@ -25,10 +25,10 @@ class Post(db.Model):
         title = data.get('title')
         content = data.get('content')
         image_url = data.get('image_url', None)  # Opcional
-        user_id = data.get('user_id')
+        user_name = data.get('user_name')
 
         # Crear y guardar el nuevo Post
-        new_post = Post(title=title, content=content, image_url=image_url, user_id=user_id)
+        new_post = Post(title=title, content=content, image_url=image_url, user_name=user_name)
         db.session.add(new_post)
         db.session.commit()
 
@@ -36,7 +36,7 @@ class Post(db.Model):
             'title': new_post.title,
             'content': new_post.content,
             'image_url': new_post.image_url,
-            'user_id': new_post.user_id,
+            'user_name': new_post.user_name,
             'date_posted': new_post.date_posted
         }}), 201
 

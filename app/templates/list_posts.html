@@ -8,37 +8,52 @@
 </head>
 <body>
     <h1>Artigow</h1>
+    <nav class="username">
+        {% if current_user.is_authenticated %}
+            <a>{{ current_user.username }}</a>
+            <a href="{{ url_for('auth.logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('auth.login') }}">Login</a>
+            <a href="{{ url_for('auth.register') }}">Register</a>
+        {% endif %}
+    </nav>
     <nav>
         <a href="{{ url_for('main.welcome') }}">Ir a página de inicio</a>
-        <a href="{{ url_for('main.new_post') }}">Crear nueva publicación</a>
-        <a href="{{ url_for('main.ranking') }}">Ranking posts</a>
+        <a href="{{ url_for('posts.new_post') }}">Crear nueva publicación</a>
+        <a href="{{ url_for('votes.ranking') }}">Ranking posts</a>
     </nav>
     <h2>Lista de Publicaciones</h2>
     
     {% if posts %}
-        <ul>
             {% for post in posts %}
-                <li>
-                    <h2>{{ post.title }}</h2>
-                    <h3>Usuario ID: {{ post.user_id }}</h3>
+                <div class=lispost>
+                    <h2 class=titlepost>{{ post.title }}</h2>                  
                     <p>{{ post.content }}</p>
-                    
+                    <h3>Usuario: {{ post.user_name }}</h3>
                     {% if post.image_url %}
                         <p><img src="{{ url_for('static', filename=post.image_url) }}" alt="Imagen de la publicación" width="200"></p>
                     {% else %}
                         <p>No hay imagen</p>
                     {% endif %}
                     <p><strong>Date:</strong> {{ post.date_posted }}</p>
-                    <p><strong>url:</strong> {{ post.image_url }}</p>
-                    <form method="post" action="{{ url_for('main.vote_post', post_id=post.id) }}">
+                    <form method="post" action="{{ url_for('votes.vote_post', post_id=post.id) }}">
                         <button type="submit">Votar</button>
                     </form>
-                </li>
+                </div>
             {% endfor %}
-        </ul>
     {% else %}
-        <p>No hay publicaciones disponibles.</p>
+    <p>No hay publicaciones disponibles.</p>
     {% endif %}
-   
+     {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div>
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
 </body>
 </html>

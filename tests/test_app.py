@@ -1,111 +1,133 @@
 # tests/test_app.py
 import pytest
-import os
 from app import create_app, db
 from app.models.posts import Post
+from app.models.votes import Vote
+from app.models.userprof import UserProf
+from flask_login import FlaskLoginClient
+from config import TestConfig
 
 
 @pytest.fixture
 def app():
-    app = create_app()
-    app.config['TESTING'] = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'  # Base de datos en memoria
-    app.config['UPLOAD_FOLDER'] = 'app/static/images'
-
+    app = create_app(config_class=TestConfig)
+    app.test_client_class = FlaskLoginClient
     with app.app_context():
         db.create_all()
         yield app
         db.session.remove()
         db.drop_all()
 
+
 @pytest.fixture
 def client(app):
     with app.test_client() as client:
         yield client
+
+
+@pytest.fixture
+def authenticated_client(client):
+    # Registrar un nuevo usuario
+    registration_data = {
+        'username': 'testuser',
+        'email': 'test@example.com',
+        'password': 'password'
+    }
+    register_response = client.post(
+        '/auth/register',
+        data=registration_data,
+        follow_redirects=True  # Sigue las redirecciones para verificar el flujo
+    )
+    assert register_response.status_code == 200  # Asegura que el registro fue exitoso
+
+    # Iniciar sesión con las credenciales recién creadas
+    login_response = client.post(
+        '/auth/login',
+        data={'email': 'test@example.com', 'password': 'password'},
+        follow_redirects=True
+    )
+    assert login_response.status_code == 200  # Asegura que el login fue exitoso
+
+    yield client
+
+
 
 def test_welcome_message(client):
     response = client.get('/')
     assert response.status_code == 200
     assert b'Bienvenido a Artigow!' in response.data
 
-def test_create_new_post(client):
-    # Datos para el nuevo post
+
+def test_create_new_post(authenticated_client):
+    # Acceder al formulario de nuevo post
+    response = authenticated_client.get('/posts/new_post')
+    assert response.status_code == 200
+
+    # Datos para el post
     data = {
         'title': 'Mi primer post',
-        'content': 'Usa tus ojos y decide por ti mismo.',
-        'user_id': 'Prueba0'
+        'content': 'Las rosas son rojas, las violetas azules.',
+        'image': None
     }
 
-    response = client.post('/new_post', data=data)
+    # Enviar el formulario
+    response = authenticated_client.post('/posts/new_post', data=data, follow_redirects=True)
     assert response.status_code == 200
     assert b'Mi primer post' in response.data
 
+
 def test_list_posts(client):
-    # Agregar un post de prueba a la base de datos
+    # Crear datos de prueba
     with client.application.app_context():
-        post = Post(title='Test Post', content='Contenido de prueba', user_id='user123')
+        post = Post(title='Test Post', content='Contenido de prueba', user_name='user123')
         db.session.add(post)
         db.session.commit()
 
-        # Verificar la respuesta de la lista de posts
-        response = client.get('/list_posts')
-        assert response.status_code == 200
-        assert b'Test Post' in response.data
-
-def test_vote_post(client):
-    from app.models.votes import Vote
-    post = Post(title="Test Post", content="Test Content", user_id=1)
-    db.session.add(post)
-    db.session.commit()
-
-    # Simular un voto a la publicación
-    response = client.post(f'/vote_post/{post.id}')
-    
-    # Verificar que la respuesta redirige a la página de ranking
-    assert response.status_code == 302  # Redirección (status 302)
-    assert response.location == '/ranking'
-
-    # Verificar que el voto fue guardado en la base de datos
-    assert Vote.query.count() == 1  # Debe haber un voto registrado
-
-def test_list_votes(client):
-    from app.models.votes import Vote  # Importar el modelo Vote
-
-    post1 = Post(title="Post 1", content="Content 1", user_id=1)
-    post2 = Post(title="Post 2", content="Content 2", user_id=2)
-
-    db.session.add(post1)
-    db.session.add(post2)
-    db.session.commit()
-
-     # Realizar votos para las publicaciones
-    vote1 = Vote(post_id=post1.id)
-    vote2 = Vote(post_id=post2.id)
-    db.session.add(vote1)
-    db.session.add(vote2)
-    db.session.commit()
-
-    # Simular solicitud GET para obtener el ranking
-    response = client.get('/ranking')
-
-
-    # Verificar que la respuesta se recibe correctamente
+    # Verificar la lista de posts
+    response = client.get('/posts/list_posts')
     assert response.status_code == 200
-    assert b'Post 1' in response.data  # Verificar que el título del post 1 aparece
-    assert b'Post 2' in response.data  # Verificar que el título del post 2 aparece
+    assert b'Test Post' in response.data
 
-def test_show_post(client):
-    post = Post(title="Test Post", content="Test Content", user_id=1)
-    db.session.add(post)
-    db.session.commit()
 
-    response = client.post(f'/show_post/{post.id}')
+def test_vote_post(authenticated_client):
+    # Crear un post de prueba
+    with authenticated_client.application.app_context():
+        post = Post(title="Post de prueba", content="Contenido de prueba", user_name="testuser")
+        db.session.add(post)
+        db.session.commit()
+        post_id = post.id  # Extraer el ID mientras la sesión está activa
 
-    # Verificar que la respuesta se recibe correctamente
+    # Votar por el post usando el ID extraído
+    response = authenticated_client.post(f'/votes/vote_post/{post_id}', follow_redirects=True)
     assert response.status_code == 200
-    assert b'Test Post' in response.data  # Verificar que el título de la publicación aparece
-    assert b'Test Content' in response.data  # Verificar que el contenido de la publicación aparece
+    assert b'Voto registrado correctamente.' in response.data
 
-    # Verificar que no se recibe error 404
-    assert b'Post no encontrado' not in response.data
 
+def test_ranking(authenticated_client):
+    # Crear posts y votos de prueba
+    with authenticated_client.application.app_context():
+        user = UserProf.query.filter_by(username="testuser").first()
+        assert user is not None, "El usuario testuser no se encontró"
+
+        post1 = Post(title="Post 1", content="Content 1", user_name=user.username)
+        post2 = Post(title="Post 2", content="Content 2", user_name=user.username)
+        db.session.add(post1)
+        db.session.add(post2)
+        db.session.commit()
+
+        vote1 = Vote(post_id=post1.id, user_id=user.id)
+        vote2 = Vote(post_id=post2.id, user_id=user.id)
+        db.session.add(vote1)
+        db.session.add(vote2)
+        db.session.commit()
+
+    # Consultar el ranking
+    response = authenticated_client.get('/votes/ranking', follow_redirects=True)
+    assert response.status_code == 200
+    assert b'Post 1' in response.data
+    assert b'Post 2' in response.data
+
+def test_404_not_found(client):
+    response = client.get('/ruta/inexistente')
+    assert response.status_code == 404
+    assert 'Recurso no encontrado'.encode('utf-8') in response.data  # Cambiar el texto a lo que la API devuelve

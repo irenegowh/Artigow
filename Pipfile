@@ -13,6 +13,7 @@ bcrypt = "*"
 pillow = "*"
 flask-mail = "*"
 flask = "*"
+marshmallow = "*"
 
 [dev-packages]
 pytest = "*"
