@@ -16,9 +16,9 @@ Esta reestructuración no solo mejora la mantenibilidad y escalabilidad de la ap
 
 [1. Justificación del framework.](./FrameworkApi.md)
 
-[2. Microservicios y estructura de la API](./Microservicios.md)
+[2. Microservicios y estructura de la API](./microservicios.md)
 
-[3. Estructura general de la aplicación: Blueprints, Repositorios y Servicios.](./EstructuraAPI.md)
+[3. Estructura general de la aplicación: Blueprints, Repositorios y Servicios.](./estructuraapi.md)
 
 [4. Gestión de logs (logging). ](./GestionLogs.md)
 
