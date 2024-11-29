@@ -1,12 +1,12 @@
 # Microservicios y estructura de la API
 
 Para este hito se ha hecho una división de las funcionalidades en microservicios.
-
+/
 Estos microservicios son:
 
 1. Microservicio de autenticación
 
-2. Microservicio de gestión de logs**
+2. Microservicio de gestión de logs
 
 3. Microservicio de gestión de roles
 
@@ -17,12 +17,16 @@ Estos microservicios son:
 ## 1. **Microservicio de autenticación**
 El microservicio de autenticación se encarga de gestionar el registro, inicio de sesión y protección de rutas mediante la autenticación de usuarios. Este microservicio utiliza Flask-Login para manejar sesiones y bcrypt para cifrar contraseñas.
 **Rutas principales**:
-    ◦ **`POST /auth/register`**: Permite a los usuarios registrarse proporcionando **`username`**, **`email`** y **`password`**.
-    ◦ **`POST /auth/login`**: Autentica a los usuarios y establece una sesión segura.
-    ◦ **`GET /auth/logout`**: Cierra la sesión del usuario autenticado.
+l
+    - **`POST /auth/register`**: Permite a los usuarios registrarse proporcionando **`username`**, **`email`** y **`password`**.
+    
+    - **`POST /auth/login`**: Autentica a los usuarios y establece una sesión segura.
+    
+    - **`GET /auth/logout`**: Cierra la sesión del usuario autenticado.
+    
 **Dependencias**:
-    ◦ **`flask-login`** para la gestión de sesiones.
-    ◦ **`bcrypt`** para hashing seguro de contraseñas.
+    - **`flask-login`** para la gestión de sesiones.
+    - **`bcrypt`** para hashing seguro de contraseñas.
 **Protección de rutas**: Se utilizan decoradores como **`@login_required`** para restringir el acceso a rutas específicas únicamente a usuarios autenticados.
 
 ## **2. Microservicio de gestión de logs**
@@ -49,20 +53,30 @@ Los métodos descritos proporcionan las siguientes funcionalidades clave:
 ## **4. Microservicio de publicaciones**
 Este microservicio permite a los usuarios crear, listar y eliminar publicaciones. También implementa validaciones para garantizar que los datos de entrada sean correctos.
 **Rutas principales**:
-    ◦ **`GET /posts/new_post`**: Muestra el formulario para crear una nueva publicación.
-    ◦ **`POST /posts/new_post`**: Procesa los datos enviados por el formulario y crea una publicación.
-    ◦ **`GET /posts/list_posts`**: Muestra una lista de todas las publicaciones.
-    ◦ **`GET /posts/delete_all_posts`**: Elimina todas las publicaciones del usuario actual.
+
+    - **`GET /posts/new_post`**: Muestra el formulario para crear una nueva publicación.
+    
+    - **`POST /posts/new_post`**: Procesa los datos enviados por el formulario y crea una publicación.
+    
+    - **`GET /posts/list_posts`**: Muestra una lista de todas las publicaciones.
+    
+    - **`GET /posts/delete_all_posts`**: Elimina todas las publicaciones del usuario actual.
 
 **Validaciones**:
-    ◦ Se utiliza Marshmallow para validar los datos enviados en las solicitudes (**`title`**, **`content`**, **`image`**).
-    ◦ Los errores de validación devuelven un código de estado **`400`** con los detalles en formato JSON.
+    - Se utiliza Marshmallow para validar los datos enviados en las solicitudes (**`title`**, **`content`**, **`image`**).
+    - Los errores de validación devuelven un código de estado **`400`** con los detalles en formato JSON.
 
 ## **5. Microservicio de gestión de votos**
 Permite a los usuarios votar por las publicaciones y calcular rankings basados en las votaciones.
+
 **Rutas principales**:
-    ◦ **`POST /votes/vote_post/<post_id>`**: Permite a un usuario votar por una publicación específica.
-    ◦ **`GET /votes/ranking`**: Devuelve el ranking de publicaciones basado en los votos.
+
+    - **`POST /votes/vote_post/<post_id>`**: Permite a un usuario votar por una publicación específica.
+    
+    - **`GET /votes/ranking`**: Devuelve el ranking de publicaciones basado en los votos.
+    
 **Lógica del ranking**:
-    ◦ Cada voto se almacena con un puntaje asignado.
-    ◦ Las publicaciones se ordenan por la suma de los votos para generar el ranking.
+
+    - Cada voto se almacena con un puntaje asignado.
+    
+    - Las publicaciones se ordenan por la suma de los votos para generar el ranking.
