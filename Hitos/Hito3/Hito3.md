@@ -1,3 +1,4 @@
+# Hito 3: Composición de servicios 
 En este hito, se ha reestructurado la aplicación para adoptar un diseño basado en microservicios, aplicando principios de modularidad y desacoplamiento. El objetivo principal ha sido crear una API REST consistente, con una arquitectura organizada en capas que separa claramente la lógica de negocio, la gestión de rutas, y el acceso a datos.
 
 Además, se han incorporado elementos clave para garantizar la calidad y robustez de la aplicación, como:
