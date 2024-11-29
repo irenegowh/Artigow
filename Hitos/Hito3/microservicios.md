@@ -33,7 +33,6 @@ El microservicio de logs centraliza el registro de actividades, errores y evento
         ▪ Log de acceso: **`logger.info(f"Usuario {current_user.username} accedió a crear un nuevo post.")`**
         ▪ Log de error: **`logger.error(f"Errores de validación al crear el post: {e.messages}")`**
 
-    ◦ 
 ## **3. Microservicio de gestión de roles**
 En un principio, se quería implementar este microservicio para gestionar los roles de los usuarios, permitiendo distinguir entre administradores y usuarios regulares. En la implementación actual no se distingue entre rol administrador y usuarios regulares, pero si que se distingue entre usuarios autenticados y no autenticados, mediante el uso de Flask-login:
 
