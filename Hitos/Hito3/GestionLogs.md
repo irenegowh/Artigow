@@ -55,7 +55,7 @@ Ejemplo del uso de logger en el servicio de publicaciones:
 
 Ejemplo de logs generados por la ruta y el servicio de publicaciones:
 
-![image.png](imagenes/logspost.png)
+![image.png](imagenes/logsposts.png)
 - **Servicio de Votos** (**`vote_service.py`**):
 
 ![image.png](imagenes/loggervotes.png)
