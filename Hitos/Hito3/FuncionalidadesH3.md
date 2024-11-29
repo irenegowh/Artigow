@@ -41,5 +41,5 @@ En esta sección se muestran imagenes de las funcionalidades de la app:
  ![](imagenes/10votoyarealizado.png)
 
 21. Eliminación de todos los posts del perfil (lo ideal seria implementar una funcionalidad para eliminar cada post de manera individual, pero no ha sido posible por limitaciones de tiempo para este hito).
-    no
+    
    ![](imagenes/11deleteallpost.png)
