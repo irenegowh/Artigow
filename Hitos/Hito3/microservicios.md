@@ -27,11 +27,14 @@ El microservicio de autenticación se encarga de gestionar el registro, inicio d
 
 ## **2. Microservicio de gestión de logs**
 El microservicio de logs centraliza el registro de actividades, errores y eventos del sistema utilizando el módulo **`logging`** de Python. Permite mantener trazabilidad y depuración en tiempo de ejecución. Esta funcionalidad se está utilizando para identificar problemas de validación en tiempo de ejecución y para proporcionar un historial de acciones realizadas por los usuarios.
+
 **Uso en el proyecto**:
-    ◦ **Nivel de logs**: Configurado para registrar información (**`INFO`**) y errores (**`ERROR`**) importantes.
-    ◦ **Ejemplo**:
-        ▪ Log de acceso: **`logger.info(f"Usuario {current_user.username} accedió a crear un nuevo post.")`**
-        ▪ Log de error: **`logger.error(f"Errores de validación al crear el post: {e.messages}")`**
+
+- **Nivel de logs**: Configurado para registrar información (**`INFO`**) y errores (**`ERROR`**) importantes.
+    
+- **Ejemplo**:
+       - Log de acceso: **`logger.info(f"Usuario {current_user.username} accedió a crear un nuevo post.")`**
+    - Log de error: **`logger.error(f"Errores de validación al crear el post: {e.messages}")`**
 
 ## **3. Microservicio de gestión de roles**
 En un principio, se quería implementar este microservicio para gestionar los roles de los usuarios, permitiendo distinguir entre administradores y usuarios regulares. En la implementación actual no se distingue entre rol administrador y usuarios regulares, pero si que se distingue entre usuarios autenticados y no autenticados, mediante el uso de Flask-login:
