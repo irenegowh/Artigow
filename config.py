@@ -2,7 +2,7 @@
 
 class Config:
     SECRET_KEY = 'xxxxyyyyyzzzzz'
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///artigow.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///data/artigow.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOAD_FOLDER = 'app/static/images'
 
