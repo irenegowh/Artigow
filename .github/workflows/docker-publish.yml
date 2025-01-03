@@ -22,17 +22,17 @@ jobs:
       # 3. Build y push db_service
       - name: Build and push db_service image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/db_service:latest -f ./container-h4-Simple/db_service/Dockerfile ./container-h4-Simple/db_service
-          docker push ghcr.io/${{ github.repository }}/db_service:latest
+          docker build -t ghcr.io/${{ github.repository | downcase }}/db_service:latest -f ./app/container_h4_Simple/db_service/Dockerfile ./app/container_h4_Simple/db_service
+          docker push ghcr.io/${{ github.repository | downcase }}/db_service:latest
 
       # 4. Build y push app_service
       - name: Build and push app_service image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/app_service:latest -f ./container-h4-Simple/app_container/Dockerfile ./container-h4-Simple/app_container
-          docker push ghcr.io/${{ github.repository }}/app_service:latest
+          docker build -t ghcr.io/${{ github.repository | downcase }}/app_service:latest -f ./app/container_h4_Simple/app_container/Dockerfile ./app/container_h4_Simple/app_container
+          docker push ghcr.io/${{ github.repository | downcase }}/app_service:latest
 
       # 5. Build y push logs_service
       - name: Build and push logs_service image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/logs_service:latest -f ./container-h4-Simple/logs_container/Dockerfile ./container-h4-Simple/logs_container
-          docker push ghcr.io/${{ github.repository }}/logs_service:latest
+          docker build -t ghcr.io/${{ github.repository | downcase }}/logs_service:latest -f ./app/container_h4_Simple/logs_container/Dockerfile ./app/container_h4_Simple/logs_container
+          docker push ghcr.io/${{ github.repository | downcase }}/logs_service:latest
