@@ -1,7 +1,7 @@
 services:
   # Servicio de base de datos
   db_service:
-    image: postgres:latest
+    image: ghcr.io/irenegowh/artigow/db_service:latest  # Usando la imagen subida a GitHub Packages
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
@@ -16,8 +16,7 @@ services:
 
   # Servicio principal de la aplicación (app_service)
   app_service:
-    build:
-      context: ./app_container  # Ajustar el contexto de construcción si es necesario
+    image: ghcr.io/irenegowh/artigow/app_service:latest  # Usando la imagen subida a GitHub Packages
     environment:
       FLASK_APP: app.run
       FLASK_ENV: development
@@ -36,8 +35,7 @@ services:
 
   # Servicio de logs
   logs_service:
-    build:
-      context: ./logs_container  # Ajustar el contexto de construcción si es necesario
+    image: ghcr.io/irenegowh/artigow/logs_service:latest  # Usando la imagen subida a GitHub Packages
     environment:
       DATABASE_URL: postgresql://user:password@db_service:5432/artigow_logs_db  # Conexión a la base de datos de logs
       POSTGRES_USER: user  # Usuario para la base de datos de logs
