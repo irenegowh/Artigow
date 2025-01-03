@@ -23,7 +23,7 @@ jobs:
       - name: Build and push db_service image
         run: |
           REPO_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
-          docker build -t ghcr.io/${REPO_NAME}/db_service:latest -f ./app/container_h4_Simple/db_service/Dockerfile ./app/container_h4_Simple/db_service
+          docker build -t ghcr.io/${REPO_NAME}/db_service:latest -f ./app/container_h4_Simple/db_container/Dockerfile ./app/container_h4_Simple/db_container
           docker push ghcr.io/${REPO_NAME}/db_service:latest
 
       # 4. Build y push app_service
