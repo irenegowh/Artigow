@@ -22,17 +22,20 @@ jobs:
       # 3. Build y push db_service
       - name: Build and push db_service image
         run: |
-          docker build -t ghcr.io/${{ github.repository.toLowerCase() }}/db_service:latest -f ./app/container_h4_Simple/db_service/Dockerfile ./app/container_h4_Simple/db_service
-          docker push ghcr.io/${{ github.repository.toLowerCase() }}/db_service:latest
+          REPO_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
+          docker build -t ghcr.io/${REPO_NAME}/db_service:latest -f ./app/container_h4_Simple/db_service/Dockerfile ./app/container_h4_Simple/db_service
+          docker push ghcr.io/${REPO_NAME}/db_service:latest
 
       # 4. Build y push app_service
       - name: Build and push app_service image
         run: |
-          docker build -t ghcr.io/${{ github.repository.toLowerCase() }}/app_service:latest -f ./app/container_h4_Simple/app_container/Dockerfile ./app/container_h4_Simple/app_container
-          docker push ghcr.io/${{ github.repository.toLowerCase() }}/app_service:latest
+          REPO_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
+          docker build -t ghcr.io/${REPO_NAME}/app_service:latest -f ./app/container_h4_Simple/app_container/Dockerfile ./app/container_h4_Simple/app_container
+          docker push ghcr.io/${REPO_NAME}/app_service:latest
 
       # 5. Build y push logs_service
       - name: Build and push logs_service image
         run: |
-          docker build -t ghcr.io/${{ github.repository.toLowerCase() }}/logs_service:latest -f ./app/container_h4_Simple/logs_container/Dockerfile ./app/container_h4_Simple/logs_container
-          docker push ghcr.io/${{ github.repository.toLowerCase() }}/logs_service:latest
+          REPO_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
+          docker build -t ghcr.io/${REPO_NAME}/logs_service:latest -f ./app/container_h4_Simple/logs_container/Dockerfile ./app/container_h4_Simple/logs_container
+          docker push ghcr.io/${REPO_NAME}/logs_service:latest
