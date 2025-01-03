@@ -1,0 +1,58 @@
+services:
+  # Servicio de base de datos
+  db_service:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: artigow_db  # Base de datos principal
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Script de inicialización para la base de datos
+    ports:
+      - "5433:5432"  # Exponiendo el puerto 5433 en la máquina host
+    networks:
+      - app_network
+
+  # Servicio principal de la aplicación (app_service)
+  app_service:
+    build:
+      context: ./app_container  # Ajustar el contexto de construcción si es necesario
+    environment:
+      FLASK_APP: app.run
+      FLASK_ENV: development
+      SQLALCHEMY_DATABASE_URI: postgresql://user:password@db_service:5432/artigow_db  # URI de conexión a la base de datos principal
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: artigow_db
+      LOG_SERVICE_URL: http://logs_service:5003/log  # URL para enviar logs al microservicio de logs
+    depends_on:
+      - db_service
+      - logs_service  # Asegura que app_service dependa de logs_service
+    ports:
+      - "5000:5000"
+    networks:
+      - app_network
+
+  # Servicio de logs
+  logs_service:
+    build:
+      context: ./logs_container  # Ajustar el contexto de construcción si es necesario
+    environment:
+      DATABASE_URL: postgresql://user:password@db_service:5432/artigow_logs_db  # Conexión a la base de datos de logs
+      POSTGRES_USER: user  # Usuario para la base de datos de logs
+      POSTGRES_PASSWORD: password  # Contraseña para la base de datos de logs
+      POSTGRES_DB: artigow_logs_db  # Base de datos específica para logs
+    depends_on:
+      - db_service  # Asegura que logs_service dependa de db_service
+    ports:
+      - "5003:5003"
+    networks:
+      - app_network
+
+volumes:
+  postgres_data:  # Volumen persistente para la base de datos
+
+networks:
+  app_network:
+    driver: bridge  # Red compartida entre los contenedores

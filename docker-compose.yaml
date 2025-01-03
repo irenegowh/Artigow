@@ -1,0 +1,53 @@
+services:
+  auth_service:
+    build:
+      context: .
+      dockerfile: app/auth_service/Dockerfile
+    ports:
+      - "5001:5001"
+
+    #depends_on:
+    #  - db_service
+    #  - logs_service
+
+  # users_service:
+  #  build: ./services/users_service
+  #  ports:
+  #    - "5004:5004"
+  #  depends_on:
+  #    - db_service
+  #    - logs_service
+
+  # posts_service:
+  #  build: ./services/posts_service
+  #  ports:
+  #    - "5002:5002"
+  #  depends_on:
+  #    - db_service
+  #    - logs_service
+
+  # votes_service:
+  #  build: ./services/votes_service
+  # ports:
+  #    - "5003:5003"
+  #  depends_on:
+  #    - db_service
+  #    - logs_service
+
+  # logs_service:
+  #  build: ./services/logs_service
+  #  ports:
+  #    - "5005:5005"
+
+  # db_service:
+  #  image: postgres:13
+  #  environment:
+  #    POSTGRES_USER: user
+  #    POSTGRES_PASSWORD: password
+  #    POSTGRES_DB: artigow_db
+  #  volumes:
+  #    - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
+

@@ -3562,3 +3562,83 @@ WHERE ? = votes.post_id]
 [2024-11-28 22:55:51,914] INFO in post_service: Imagen eliminada: C:\Users\Irene\Desktop\Artigow\app\static\images/FWM_1024942.JPG
 [2024-11-28 22:55:51,934] INFO in post_service: Publicaciones del usuario mgmoso eliminadas correctamente.
 [2024-11-28 22:55:51,934] INFO in _internal: 127.0.0.1 - - [28/Nov/2024 22:55:51] "GET /posts/delete_all_posts HTTP/1.1" 200 -
+[2025-01-03 14:01:03,106] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:02:14,939] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:02:15,105] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-03 14:02:15,129] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:02:15,305] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-03 14:02:15,455] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-03 14:02:15,455] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-03 14:02:15,459] INFO in posts: Usuario testuser accedió a crear un nuevo post.
+[2025-01-03 14:02:15,522] INFO in posts: Usuario testuser accedió a crear un nuevo post.
+[2025-01-03 14:02:15,526] INFO in post_service: Publicación 'Mi primer post' creada por testuser
+[2025-01-03 14:02:15,526] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-03 14:02:15,526] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-03 14:02:15,542] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:02:15,550] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-03 14:02:15,550] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-03 14:02:15,562] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:02:15,706] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-03 14:02:15,851] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-03 14:02:15,851] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-03 14:02:15,859] INFO in votes: Usuario testuser está votando por el post 1.
+[2025-01-03 14:02:15,863] INFO in votes_service: Voto agregado para el post 1 por el usuario testuser.
+[2025-01-03 14:02:15,863] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-03 14:02:15,867] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-03 14:02:15,940] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:02:16,091] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-03 14:02:16,245] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-03 14:02:16,249] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-03 14:02:16,264] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-03 14:02:16,265] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-03 14:02:16,276] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:02:16,282] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-03 14:03:43,758] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:07:29,173] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:07:29,270] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-03 14:07:29,287] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:07:29,452] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-03 14:07:29,599] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-03 14:07:29,599] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-03 14:07:29,607] INFO in posts: Usuario testuser accedió a crear un nuevo post.
+[2025-01-03 14:07:29,614] INFO in posts: Usuario testuser accedió a crear un nuevo post.
+[2025-01-03 14:07:29,614] INFO in post_service: Publicación 'Mi primer post' creada por testuser
+[2025-01-03 14:07:29,614] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-03 14:07:29,614] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-03 14:07:29,631] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:07:29,639] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-03 14:07:29,639] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-03 14:07:29,651] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:07:29,819] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-03 14:07:29,980] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-03 14:07:29,983] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-03 14:07:29,993] INFO in votes: Usuario testuser está votando por el post 1.
+[2025-01-03 14:07:29,997] INFO in votes_service: Voto agregado para el post 1 por el usuario testuser.
+[2025-01-03 14:07:29,997] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-03 14:07:30,001] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-03 14:07:30,015] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:07:30,170] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-03 14:07:30,329] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-03 14:07:30,329] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-03 14:07:30,341] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-03 14:07:30,341] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-03 14:07:30,357] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:07:30,365] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-03 14:08:52,687] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:12:47,999] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:13:07,629] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:14:04,180] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:14:04,395] INFO in _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-01-03 14:14:04,395] INFO in _internal: [33mPress CTRL+C to quit[0m
+[2025-01-03 14:14:04,403] INFO in _internal:  * Restarting with stat
+[2025-01-03 14:14:05,527] INFO in __init__: Aplicación inicializada
+[2025-01-03 14:14:05,648] WARNING in _internal:  * Debugger is active!
+[2025-01-03 14:14:05,660] INFO in _internal:  * Debugger PIN: 632-575-535
+[2025-01-03 14:14:23,815] INFO in _internal: 127.0.0.1 - - [03/Jan/2025 14:14:23] "GET /auth/register HTTP/1.1" 200 -
+[2025-01-03 14:14:24,123] INFO in _internal: 127.0.0.1 - - [03/Jan/2025 14:14:24] "GET /static/style_artigow.css HTTP/1.1" 200 -
+[2025-01-03 14:14:32,608] INFO in _internal: 127.0.0.1 - - [03/Jan/2025 14:14:32] "GET /auth/register HTTP/1.1" 200 -
+[2025-01-03 14:14:32,941] INFO in _internal: 127.0.0.1 - - [03/Jan/2025 14:14:32] "[36mGET /static/style_artigow.css HTTP/1.1[0m" 304 -
+[2025-01-03 14:15:35,575] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-03 14:15:35,588] INFO in _internal: 127.0.0.1 - - [03/Jan/2025 14:15:35] "GET / HTTP/1.1" 200 -
+[2025-01-03 14:15:35,695] INFO in _internal: 127.0.0.1 - - [03/Jan/2025 14:15:35] "GET /static/style_artigow.css HTTP/1.1" 200 -

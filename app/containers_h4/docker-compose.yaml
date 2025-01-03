@@ -1,0 +1,95 @@
+services:
+  db_service:
+    build:
+      context: ./db_container
+    ports:
+      - "5433:5433"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: artigow_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+  auth_service:
+    build:
+      context: ./auth_container
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@db_service:5433/artigow_db
+      - LOGS_SERVICE_URL=http://logs_service:5003
+    depends_on:
+      - db_service
+    networks:
+      - app_network
+
+  admin_service:
+    build:
+      context: ./admin_container
+    ports:
+      - "5001:5001"
+    environment:
+      - DATABASE_URL=postgresql://user:password@db_service:5433/artigow_db
+      - LOGS_SERVICE_URL=http://logs_service:5003
+    depends_on:
+      - db_service
+    networks:
+      - app_network
+
+  logs_service:
+    build:
+      context: ./logs_container
+    ports:
+      - "5003:5003"
+    environment:
+      - DATABASE_URL=postgresql://user:password@db_service:5433/artigow_db
+    networks:
+      - app_network
+
+  posts_service:
+    build:
+      context: ./posts_container
+    ports:
+      - "5004:5004"
+    environment:
+      - DATABASE_URL=postgresql://user:password@db_service:5433/artigow_db
+    depends_on:
+      - db_service
+    networks:
+      - app_network
+
+  votes_service:
+    build:
+      context: ./votes_container
+    ports:
+      - "5005:5005"
+    environment:
+      - DATABASE_URL=postgresql://user:password@db_service:5433/artigow_db
+      - LOGS_SERVICE_URL=http://logs_service:5003
+    depends_on:
+      - db_service
+    networks:
+      - app_network
+
+  templates_service:
+    build:
+      context: ./templates_container
+    ports:
+      - "5006:5006"
+    environment:
+      - FLASK_APP=templates_service.run
+      - FLASK_ENV=development
+    depends_on:
+      - db_service
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  postgres_data:

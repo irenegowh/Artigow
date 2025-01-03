@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artigow</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_artigow.css') }}">
+</head>
+<body>
+    <h1>Artigow</h1>
+    <nav class="username">
+        {% if current_user.is_authenticated %}
+            <a>{{ current_user.username }}</a>
+            <a href="{{ url_for('auth.logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('auth.login') }}">Login</a>
+            <a href="{{ url_for('auth.register') }}">Register</a>
+        {% endif %}
+    </nav>
+    <nav>
+        <a href="{{ url_for('main.welcome') }}">Ir a página de inicio</a>
+        <a href="{{ url_for('posts.new_post') }}">Crear nueva publicación</a>
+        <a href="{{ url_for('votes.ranking') }}">Ranking posts</a>
+    </nav>
+    <h2>Lista de Publicaciones</h2>
+    
+    {% if posts %}
+            {% for post in posts %}
+                <div class=lispost>
+                    <h2 class=titlepost>{{ post.title }}</h2>                  
+                    <p>{{ post.content }}</p>
+                    <h3>Usuario: {{ post.user_name }}</h3>
+                    {% if post.image_url %}
+                        <p><img src="{{ url_for('static', filename=post.image_url) }}" alt="Imagen de la publicación" width="200"></p>
+                    {% else %}
+                        <p>No hay imagen</p>
+                    {% endif %}
+                    <p><strong>Date:</strong> {{ post.date_posted }}</p>
+                    <form method="post" action="{{ url_for('votes.vote_post', post_id=post.id) }}">
+                        <button type="submit">Votar</button>
+                    </form>
+                </div>
+            {% endfor %}
+    {% else %}
+    <p>No hay publicaciones disponibles.</p>
+    {% endif %}
+     {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div>
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
