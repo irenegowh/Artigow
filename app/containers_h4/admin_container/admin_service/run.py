@@ -1,8 +1,0 @@
-# auth_service/run.py
-
-from admin_service import create_app
-
-app = create_app()
-
-if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0", port=5000)
