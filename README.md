@@ -1,7 +1,7 @@
 # Cloud-Comunting
 Repositorio para almacenar el proyecto de la asignatura de Cloud Comuting del curso 24-25 del Máster Universitario en Ingeniería Informática en la UGR, por la aluman Irene Gosálvez White.
 
-# Descripción del proyecto//
+# Descripción del proyecto
 Artigow es una aplicación pensada para proporcionar a los artistas una plataforma para compartir y dar a conocer sus obras en categorías especificas. 
 Además, los propios artistas podrán votar las obras más originales generando un ranking basado en los resultados y la aceptación de las distintas obras dentro de la comunidad.
 
