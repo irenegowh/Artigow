@@ -93,6 +93,10 @@ def consulta_form():
     """Sirve el formulario HTML para hacer consultas SQL."""
     return render_template('logs_service.html')  # Asegúrate de que el archivo HTML está en la carpeta 'templates'
 
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "Logs Service is running"}), 200
+
 
 if __name__ == '__main__':
     init_db()  # Crear la tabla al iniciar

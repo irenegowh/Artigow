@@ -6,7 +6,12 @@ from app.models.votes import Vote
 from app.models.userprof import UserProf
 from flask_login import FlaskLoginClient
 from config import TestConfig
+import requests
+import time
 
+########################################################
+#                 APLICACIÓN MONOLÍTICA                #
+########################################################
 
 @pytest.fixture
 def app():
@@ -131,3 +136,164 @@ def test_404_not_found(client):
     response = client.get('/ruta/inexistente')
     assert response.status_code == 404
     assert 'Recurso no encontrado'.encode('utf-8') in response.data  # Cambiar el texto a lo que la API devuelve
+
+########################################################
+#                   ENTORNO DOCKERIZADO                #
+########################################################
+
+# URLS base de cada servicio en el entorno Docker
+BASE_URL_APP = "http://localhost:5000"
+BASE_URL_LOGS = "http://localhost:5003"
+
+@pytest.fixture(scope="session")
+def wait_for_services():
+    max_retries = 10
+    for attempt in range(max_retries):
+        try:
+            app_response = requests.get(BASE_URL_APP)
+            logs_response = requests.get(f"{BASE_URL_LOGS}/health")
+            if app_response.status_code == 200 and logs_response.status_code == 200:
+                return
+        except requests.exceptions.ConnectionError:
+            pass
+        time.sleep(5)
+    pytest.fail("Los servicios no están disponibles después de varios intentos.")
+
+
+def test_db_connection(client):
+    with client.application.app_context():
+        # Verificar que se pueda conectar a la base de datos
+        result = db.session.execute('SELECT 1')
+        assert result.scalar() == 1  # Verifica que la consulta devuelve 1
+
+def test_logs_service():
+    # Enviar una solicitud al servicio de logs con datos válidos
+    log_data = {
+        "level": "INFO",
+        "module": "test_module",
+        "message": "Esto es un mensaje de prueba"
+    }
+    response = requests.post(f"{BASE_URL_LOGS}/log", json=log_data)
+    assert response.status_code == 201
+    assert response.json()["status"] == "Log almacenado"
+
+def test_connectivity_to_logs_service(wait_for_services):
+    response = requests.get(f"{BASE_URL_LOGS}/health")
+    assert response.status_code == 200
+    assert response.json()["status"] == "Logs Service is running"
+
+# Fixtures para entorno Docker
+@pytest.fixture(scope="session")
+def wait_for_services():
+    """
+    Espera a que los servicios en Docker estén disponibles.
+    """
+    max_retries = 10
+    for attempt in range(max_retries):
+        try:
+            app_response = requests.get(BASE_URL_APP)
+            logs_response = requests.get(f"{BASE_URL_LOGS}/health")  # Supongamos que logs_service tiene un endpoint de salud
+            if app_response.status_code == 200 and logs_response.status_code == 200:
+                print("Todos los servicios están disponibles.")
+                return
+        except requests.exceptions.ConnectionError:
+            pass
+        time.sleep(5)
+    pytest.fail("Los servicios no están disponibles después de varios intentos.")
+
+# Tests de conectividad entre contenedores
+def test_connectivity_to_app_service(wait_for_services):
+    # Verifica que el servicio principal (app_service) responde correctamente.
+    response = requests.get(BASE_URL_APP)
+    assert response.status_code == 200
+    assert b'Bienvenido a Artigow!' in response.content
+
+def test_connectivity_to_logs_service(wait_for_services):  
+    # Verifica que el servicio de logs responde correctamente.   
+    response = requests.get(f"{BASE_URL_LOGS}/health")
+    assert response.status_code == 200
+    assert b'Logs Service is running' in response.content
+
+# Tests funcionales en contenedores
+def test_user_registration_and_login(wait_for_services):   
+    # Prueba el flujo de registro e inicio de sesión en el entorno Docker.   
+    # Registro
+    registration_data = {
+        'username': 'dockeruser',
+        'email': 'docker@example.com',
+        'password': 'password'
+    }
+    register_response = requests.post(
+        f"{BASE_URL_APP}/auth/register",
+        data=registration_data
+    )
+    assert register_response.status_code == 200
+
+    # Login
+    login_data = {
+        'email': 'docker@example.com',
+        'password': 'password'
+    }
+    login_response = requests.post(
+        f"{BASE_URL_APP}/auth/login",
+        data=login_data
+    )
+    assert login_response.status_code == 200
+
+
+def test_create_and_vote_post(wait_for_services):
+    # Prueba la creación de un post y la votación en el entorno Docker.
+    # Datos de registro y login
+    registration_data = {
+        'username': 'dockeruser',
+        'email': 'docker@example.com',
+        'password': 'password'
+    }
+    requests.post(f"{BASE_URL_APP}/auth/register", data=registration_data)
+    login_response = requests.post(
+        f"{BASE_URL_APP}/auth/login",
+        data={'email': 'docker@example.com', 'password': 'password'}
+    )
+    assert login_response.status_code == 200
+
+    # Crear un nuevo post
+    cookies = login_response.cookies  # Reutilizar cookies de autenticación
+    post_data = {
+        'title': 'Docker Post',
+        'content': 'Este es un post de prueba en Docker.',
+        'image': None
+    }
+    create_post_response = requests.post(
+        f"{BASE_URL_APP}/posts/new_post",
+        data=post_data,
+        cookies=cookies
+    )
+    assert create_post_response.status_code == 200
+
+    # Votar por el post (supongamos que conocemos el ID del post)
+    post_id = 1  # Cambia según tu lógica
+    vote_response = requests.post(
+        f"{BASE_URL_APP}/votes/vote_post/{post_id}",
+        cookies=cookies
+    )
+    assert vote_response.status_code == 200
+    assert b'Voto registrado correctamente.' in vote_response.content
+
+def test_user_registration_and_login(wait_for_services):
+    # Registro
+    registration_data = {
+        "username": "dockeruser",
+        "email": "docker@example.com",
+        "password": "password"
+    }
+    register_response = requests.post(
+        f"{BASE_URL_APP}/auth/register",
+        json=registration_data
+    )
+    assert register_response.status_code == 200
+
+    # Login
+    login_data = {"email": "docker@example.com", "password": "password"}
+    login_response = requests.post(f"{BASE_URL_APP}/auth/login", json=login_data)
+    assert login_response.status_code == 200
+
