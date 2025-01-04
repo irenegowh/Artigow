@@ -5095,3 +5095,244 @@ WHERE ? = votes.post_id]
 [2025-01-04 16:07:37,653] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
 [2025-01-04 16:07:37,662] INFO in __init__: Aplicación inicializada
 [2025-01-04 16:07:37,667] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-04 18:10:22,422] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:10:22,543] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:10:22,652] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:10:22,664] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-04 18:10:22,666] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-04 18:10:22,675] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:10:22,789] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:10:22,901] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:10:22,902] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:10:22,908] INFO in votes: Usuario testuser está votando por el post 1.
+[2025-01-04 18:10:22,910] INFO in votes_service: Voto agregado para el post 1 por el usuario testuser.
+[2025-01-04 18:10:22,911] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:10:22,913] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:10:22,922] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:10:23,062] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:10:23,178] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:10:23,179] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:10:23,187] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:10:23,188] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:10:23,196] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:10:23,202] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-04 18:12:50,469] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:12:50,533] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:12:50,669] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:12:50,682] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-04 18:12:50,684] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-04 18:12:51,132] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:12:51,244] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:12:51,356] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:12:51,358] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:12:51,367] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:12:51,368] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:12:51,379] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:12:51,385] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-04 18:14:36,113] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:14:36,176] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:14:36,321] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:14:36,333] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-04 18:14:36,335] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-04 18:14:36,709] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:14:36,829] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:14:36,941] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:14:36,942] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:14:36,951] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:14:36,953] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:14:36,963] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:14:36,969] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-04 18:15:03,251] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:15:03,311] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:15:03,445] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:15:03,459] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-04 18:15:03,460] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-04 18:15:03,847] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:15:03,965] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:15:04,079] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:15:04,080] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:15:04,089] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:15:04,091] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:15:04,102] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:15:04,108] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-04 18:17:10,563] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:17:10,637] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:17:10,732] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:17:10,745] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-04 18:17:10,746] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-04 18:17:11,118] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:17:11,236] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:17:11,349] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:17:11,350] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:17:11,359] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:17:11,361] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:17:11,370] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:17:11,377] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-04 18:21:23,337] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:21:23,401] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:21:23,548] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:21:23,561] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-04 18:21:23,563] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-04 18:21:23,571] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:21:23,687] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:21:23,799] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:21:23,800] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:21:23,806] INFO in votes: Usuario testuser está votando por el post 1.
+[2025-01-04 18:21:23,809] INFO in votes_service: Voto agregado para el post 1 por el usuario testuser.
+[2025-01-04 18:21:23,810] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:21:23,811] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:21:23,821] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:21:23,934] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:21:24,048] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:21:24,048] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:21:24,057] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:21:24,058] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:21:24,067] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:21:24,073] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-04 18:29:39,727] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:29:39,819] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:29:40,032] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:29:40,057] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-04 18:29:40,057] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-04 18:29:40,073] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:29:40,254] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:29:40,407] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:29:40,407] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:29:40,419] INFO in votes: Usuario testuser está votando por el post 1.
+[2025-01-04 18:29:40,419] INFO in votes_service: Voto agregado para el post 1 por el usuario testuser.
+[2025-01-04 18:29:40,423] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:29:40,423] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:29:40,443] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:29:40,602] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:29:40,760] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:29:40,760] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:29:40,772] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:29:40,772] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:29:40,789] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:29:40,797] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-04 18:32:11,632] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:32:11,751] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:32:11,967] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:32:11,991] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-04 18:32:11,995] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-04 18:32:12,015] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:32:12,184] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:32:12,343] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:32:12,347] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:32:12,363] INFO in votes: Usuario testuser está votando por el post 1.
+[2025-01-04 18:32:12,367] INFO in votes_service: Voto agregado para el post 1 por el usuario testuser.
+[2025-01-04 18:32:12,367] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:32:12,367] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:32:12,388] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:32:12,562] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:32:12,722] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:32:12,726] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:32:12,743] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:32:12,746] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:32:12,762] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:32:12,770] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-04 18:37:51,469] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:37:51,558] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:37:51,806] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:37:51,826] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-04 18:37:51,826] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-04 18:37:51,846] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:37:52,037] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:37:52,183] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:37:52,183] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:37:52,191] INFO in votes: Usuario testuser está votando por el post 1.
+[2025-01-04 18:37:52,195] INFO in votes_service: Voto agregado para el post 1 por el usuario testuser.
+[2025-01-04 18:37:52,195] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:37:52,199] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:37:52,213] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:37:52,363] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:37:52,515] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:37:52,515] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:37:52,527] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:37:52,531] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:37:52,543] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:37:52,547] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-04 18:40:51,494] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:40:51,587] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:40:51,819] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:40:51,838] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-04 18:40:51,842] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-04 18:40:51,862] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:40:52,044] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:40:52,203] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:40:52,203] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:40:52,215] INFO in votes: Usuario testuser está votando por el post 1.
+[2025-01-04 18:40:52,215] INFO in votes_service: Voto agregado para el post 1 por el usuario testuser.
+[2025-01-04 18:40:52,219] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:40:52,219] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:40:52,236] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:40:52,425] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:40:52,589] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:40:52,589] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:40:52,603] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:40:52,603] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:40:52,617] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:40:52,626] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-04 18:42:20,201] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:42:20,301] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:42:20,506] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:42:20,526] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-04 18:42:20,530] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-04 18:42:20,546] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:42:20,757] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:42:20,942] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:42:20,942] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:42:20,950] INFO in votes: Usuario testuser está votando por el post 1.
+[2025-01-04 18:42:20,954] INFO in votes_service: Voto agregado para el post 1 por el usuario testuser.
+[2025-01-04 18:42:20,958] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:42:20,958] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:42:20,974] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:42:21,174] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:42:21,347] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:42:21,347] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:42:21,363] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:42:21,363] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:42:21,379] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:42:21,387] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-04 18:58:12,292] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:58:12,420] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:58:12,897] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:58:12,917] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-04 18:58:12,921] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-04 18:58:12,937] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:58:13,129] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:58:13,355] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:58:13,359] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:58:13,376] INFO in votes: Usuario testuser está votando por el post 1.
+[2025-01-04 18:58:13,380] INFO in votes_service: Voto agregado para el post 1 por el usuario testuser.
+[2025-01-04 18:58:13,384] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:58:13,384] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:58:13,408] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:58:13,655] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:58:13,819] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:58:13,819] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:58:13,831] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:58:13,831] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:58:13,845] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:58:13,853] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-04 18:59:21,709] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:59:21,801] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:59:22,030] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:59:22,050] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-04 18:59:22,054] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-04 18:59:22,070] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:59:22,247] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:59:22,396] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:59:22,400] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:59:22,408] INFO in votes: Usuario testuser está votando por el post 1.
+[2025-01-04 18:59:22,413] INFO in votes_service: Voto agregado para el post 1 por el usuario testuser.
+[2025-01-04 18:59:22,413] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:59:22,417] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:59:22,429] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:59:22,579] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-04 18:59:22,727] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-04 18:59:22,727] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-04 18:59:22,737] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-04 18:59:22,742] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-04 18:59:22,758] INFO in __init__: Aplicación inicializada
+[2025-01-04 18:59:22,770] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.

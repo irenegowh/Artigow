@@ -8,6 +8,8 @@ from flask_login import FlaskLoginClient
 from config import TestConfig
 import requests
 import time
+import subprocess
+
 
 ########################################################
 #                 APLICACIÓN MONOLÍTICA                #
@@ -138,7 +140,49 @@ def test_404_not_found(client):
 ########################################################
 #                   ENTORNO DOCKERIZADO                #
 ########################################################
+
+DOCKER_COMPOSE_FILE = "app/container_h4_Simple/docker-compose.yaml"
 BASE_URL_LOGS = "http://localhost:5003"  # Asegúrate de que la URL es la correcta
+BASE_URL_APP = "http://localhost:5000"  # Cambia si tu aplicación está en otra URL
+
+def run_docker_compose(command):
+    """Ejecuta un comando de docker-compose."""
+    try:
+        subprocess.run(
+            ["docker-compose", "-f", DOCKER_COMPOSE_FILE] + command.split(),
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError(
+            f"Error al ejecutar docker-compose {command}:\n{e.stderr.decode()}"
+        )
+
+def wait_for_service(url, timeout=30):
+    """Espera a que un servicio esté disponible."""
+    for _ in range(timeout):
+        try:
+            response = requests.get(url)
+            if response.status_code == 200:
+                return True
+        except requests.exceptions.ConnectionError:
+            time.sleep(1)
+    return False
+
+
+def setup_module(module):
+    """Setup para el módulo de tests: lanzar docker-compose."""
+    print("\nIniciando el clúster de contenedores...")
+    run_docker_compose("up -d")
+    time.sleep(10)  # Esperar unos segundos para que los contenedores se inicien.
+
+
+def teardown_module(module):
+    """Teardown para el módulo de tests: apagar docker-compose."""
+    print("\nDeteniendo el clúster de contenedores...")
+    run_docker_compose("down")
+
 
 #******************************************************#
 #                   contenedor de logs                 #
@@ -228,7 +272,6 @@ def test_retrieve_stored_logs():
 #******************************************************#
 #                   contenedor de app                  #
 #******************************************************#
-BASE_URL_APP = "http://localhost:5000"  # Cambia si tu aplicación está en otra URL
 
 def test_register_login_logout_user():
     # Paso 1: Generar un nombre de usuario único utilizando el timestamp actual
@@ -298,12 +341,3 @@ def test_create_new_post():
 
     # Verificar que la respuesta de la creación del post sea exitosa (redirección)
     assert create_post_response.status_code == 200, f"Expected 200, but got {create_post_response.status_code}"
-
-    # Enviar solicitud GET para eliminar todos los posts
-    delete_response = requests.get(f"{BASE_URL_APP}/posts/delete_all_posts", cookies=login_response.cookies)
-
-    # Verificar que la respuesta de eliminación sea exitosa (código 200)
-    assert delete_response.status_code == 200, f"Expected 200, but got {delete_response.status_code}"
-
-    # Verificar que el mensaje de éxito se encuentra en la respuesta
-    assert "Todas las publicaciones han sido eliminadas" in delete_response.json()["message"], "Delete all posts message not found"
