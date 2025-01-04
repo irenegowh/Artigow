@@ -20,6 +20,12 @@ jobs:
       with:
         python-version: '3.12'
 
+    # Nuevo paso: Instalar Docker Compose
+    - name: Install Docker Compose
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker-compose
+
     - name: Install pipenv
       run: pip install pipenv
 
