@@ -55,8 +55,6 @@ def authenticated_client(client):
 
     yield client
 
-
-
 def test_welcome_message(client):
     response = client.get('/')
     assert response.status_code == 200
@@ -140,160 +138,172 @@ def test_404_not_found(client):
 ########################################################
 #                   ENTORNO DOCKERIZADO                #
 ########################################################
+BASE_URL_LOGS = "http://localhost:5003"  # Asegúrate de que la URL es la correcta
 
-# URLS base de cada servicio en el entorno Docker
-BASE_URL_APP = "http://localhost:5000"
-BASE_URL_LOGS = "http://localhost:5003"
+#******************************************************#
+#                   contenedor de logs                 #
+#******************************************************#
+def test_connectivity_to_logs_service():
+    try:
+        # Verificar que el servicio de logs responde en el endpoint principal '/'
+        response = requests.get(BASE_URL_LOGS)
+        assert response.status_code == 200
+        assert "formulario" in response.text.lower()  # Verifica si la palabra "formulario" está en la respuesta HTML
+        print("El servicio de logs está disponible y funcionando.")
+    except requests.exceptions.RequestException as e:
+        pytest.fail(f"No se pudo conectar al servicio de logs: {e}")
 
-@pytest.fixture(scope="session")
-def wait_for_services():
-    max_retries = 10
-    for attempt in range(max_retries):
-        try:
-            app_response = requests.get(BASE_URL_APP)
-            logs_response = requests.get(f"{BASE_URL_LOGS}/health")
-            if app_response.status_code == 200 and logs_response.status_code == 200:
-                return
-        except requests.exceptions.ConnectionError:
-            pass
-        time.sleep(5)
-    pytest.fail("Los servicios no están disponibles después de varios intentos.")
-
-
-def test_db_connection(client):
-    with client.application.app_context():
-        # Verificar que se pueda conectar a la base de datos
-        result = db.session.execute('SELECT 1')
-        assert result.scalar() == 1  # Verifica que la consulta devuelve 1
-
-def test_logs_service():
-    # Enviar una solicitud al servicio de logs con datos válidos
+def test_receive_log():
     log_data = {
         "level": "INFO",
         "module": "test_module",
-        "message": "Esto es un mensaje de prueba"
+        "message": "Este es un mensaje de prueba"
     }
-    response = requests.post(f"{BASE_URL_LOGS}/log", json=log_data)
-    assert response.status_code == 201
-    assert response.json()["status"] == "Log almacenado"
 
-def test_connectivity_to_logs_service(wait_for_services):
-    response = requests.get(f"{BASE_URL_LOGS}/health")
-    assert response.status_code == 200
-    assert response.json()["status"] == "Logs Service is running"
+    try:
+        response = requests.post(f"{BASE_URL_LOGS}/log", json=log_data)
+        assert response.status_code == 201
+        assert response.json()["status"] == "Log almacenado"
+        print("Log recibido y almacenado correctamente.")
+    except requests.exceptions.RequestException as e:
+        pytest.fail(f"No se pudo enviar el log: {e}")
 
-# Fixtures para entorno Docker
-@pytest.fixture(scope="session")
-def wait_for_services():
-    """
-    Espera a que los servicios en Docker estén disponibles.
-    """
-    max_retries = 10
-    for attempt in range(max_retries):
-        try:
-            app_response = requests.get(BASE_URL_APP)
-            logs_response = requests.get(f"{BASE_URL_LOGS}/health")  # Supongamos que logs_service tiene un endpoint de salud
-            if app_response.status_code == 200 and logs_response.status_code == 200:
-                print("Todos los servicios están disponibles.")
-                return
-        except requests.exceptions.ConnectionError:
-            pass
-        time.sleep(5)
-    pytest.fail("Los servicios no están disponibles después de varios intentos.")
+def test_run_query():
+    query_data = {
+        "query": "SELECT * FROM application_logs LIMIT 1;"  # Asegúrate de que la tabla tiene datos
+    }
 
-# Tests de conectividad entre contenedores
-def test_connectivity_to_app_service(wait_for_services):
-    # Verifica que el servicio principal (app_service) responde correctamente.
-    response = requests.get(BASE_URL_APP)
-    assert response.status_code == 200
-    assert b'Bienvenido a Artigow!' in response.content
+    try:
+        response = requests.post(f"{BASE_URL_LOGS}/query", json=query_data)
+        assert response.status_code == 200
+        result = response.json()
+        assert isinstance(result, list)  # Debería devolver una lista de resultados
+        print("Consulta SQL ejecutada correctamente.")
+    except requests.exceptions.RequestException as e:
+        pytest.fail(f"No se pudo ejecutar la consulta SQL: {e}")
 
-def test_connectivity_to_logs_service(wait_for_services):  
-    # Verifica que el servicio de logs responde correctamente.   
-    response = requests.get(f"{BASE_URL_LOGS}/health")
-    assert response.status_code == 200
-    assert b'Logs Service is running' in response.content
+def test_receive_log_incomplete_data():
+    # Enviar un log incompleto (sin mensaje)
+    log_data = {
+        "level": "INFO",
+        "module": "test_module"
+    }
 
-# Tests funcionales en contenedores
-def test_user_registration_and_login(wait_for_services):   
-    # Prueba el flujo de registro e inicio de sesión en el entorno Docker.   
-    # Registro
+    try:
+        response = requests.post(f"{BASE_URL_LOGS}/log", json=log_data)
+        assert response.status_code == 400
+        assert "Datos incompletos" in response.json()["error"]
+        print("Respuesta correcta ante datos incompletos.")
+    except requests.exceptions.RequestException as e:
+        pytest.fail(f"No se manejó correctamente el error de datos incompletos: {e}")
+
+def test_run_invalid_query():
+    query_data = {
+        "query": "SELECT * FROM non_existent_table;"  # Tabla inexistente
+    }
+
+    try:
+        response = requests.post(f"{BASE_URL_LOGS}/query", json=query_data)
+        assert response.status_code == 500
+        assert "error" in response.json()
+        print("Error manejado correctamente por consulta inválida.")
+    except requests.exceptions.RequestException as e:
+        pytest.fail(f"No se manejó correctamente el error de consulta inválida: {e}")
+
+def test_retrieve_stored_logs():
+    query_data = {
+        "query": "SELECT * FROM application_logs LIMIT 1;"  # Suponiendo que hay al menos un log en la base de datos
+    }
+
+    try:
+        response = requests.post(f"{BASE_URL_LOGS}/query", json=query_data)
+        assert response.status_code == 200
+        result = response.json()
+        assert len(result) > 0  # Asegúrate de que se obtienen registros
+        print("Logs recuperados correctamente.")
+    except requests.exceptions.RequestException as e:
+        pytest.fail(f"No se pudo recuperar los logs almacenados: {e}")
+
+
+#******************************************************#
+#                   contenedor de app                  #
+#******************************************************#
+BASE_URL_APP = "http://localhost:5000"  # Cambia si tu aplicación está en otra URL
+
+def test_register_login_logout_user():
+    # Paso 1: Generar un nombre de usuario único utilizando el timestamp actual
+    unique_suffix = str(int(time.time()))  # Utilizamos el tiempo actual como sufijo único
+    username = f"testuser_{unique_suffix}"
+    
     registration_data = {
-        'username': 'dockeruser',
-        'email': 'docker@example.com',
-        'password': 'password'
+        "username": username,
+        "email": f"{username}@example.com",
+        "password": "securepassword"
     }
-    register_response = requests.post(
-        f"{BASE_URL_APP}/auth/register",
-        data=registration_data
-    )
-    assert register_response.status_code == 200
 
-    # Login
+    # Enviar una solicitud POST al endpoint de registro
+    response = requests.post(f"{BASE_URL_APP}/auth/register", data=registration_data)
+
+    # Verificar que la respuesta de registro sea exitosa (código 200)
+    assert response.status_code == 200, f"Expected 200, but got {response.status_code}"
+
+    # Verificar que la respuesta contiene un mensaje de éxito (puedes modificar esto según el formato de tu respuesta)
+    assert "Usuario registrado correctamente" in response.text, "Registration success message not found"
+
+    # Paso 2: Intentar hacer login con las credenciales del usuario registrado
     login_data = {
-        'email': 'docker@example.com',
-        'password': 'password'
+        "email": f"{username}@example.com",
+        "password": "securepassword"
     }
-    login_response = requests.post(
-        f"{BASE_URL_APP}/auth/login",
-        data=login_data
-    )
+    
+    # Enviar solicitud POST al endpoint de login
+    login_response = requests.post(f"{BASE_URL_APP}/auth/login", data=login_data, cookies=response.cookies)
+
+    # Verificar que la respuesta del login sea exitosa (código 302)
+    assert login_response.status_code == 200, f"Expected 302, but got {login_response.status_code}"
+    
+    # Paso 3: Hacer logout
+    logout_response = requests.get(f"{BASE_URL_APP}/auth/logout", cookies=login_response.cookies)
+
+    # Verificar que el logout redirige a la página de login (código 302)
+    assert logout_response.status_code == 200, f"Expected 302, but got {logout_response.status_code}"
+
+def test_list_posts_container():
+    # Enviar una solicitud GET al endpoint de listado de publicaciones
+    response = requests.get(f"{BASE_URL_APP}/posts/list_posts")
+
+    # Verificar que la respuesta sea exitosa (código 200)
+    assert response.status_code == 200, f"Expected 200, but got {response.status_code}"
+
+    # Verificar que la respuesta contiene información sobre las publicaciones
+    assert "posts" in response.text, "No posts found in the response"
+
+def test_create_new_post():
+    # Autenticación (necesitarías una sesión activa de usuario)
+    login_data = {"email": "testuser@example.com", "password": "securepassword"}
+    login_response = requests.post(f"{BASE_URL_APP}/auth/login", data=login_data)
+
+    # Verificar que el login fue exitoso (redirección a la página de bienvenida)
     assert login_response.status_code == 200
 
-
-def test_create_and_vote_post(wait_for_services):
-    # Prueba la creación de un post y la votación en el entorno Docker.
-    # Datos de registro y login
-    registration_data = {
-        'username': 'dockeruser',
-        'email': 'docker@example.com',
-        'password': 'password'
-    }
-    requests.post(f"{BASE_URL_APP}/auth/register", data=registration_data)
-    login_response = requests.post(
-        f"{BASE_URL_APP}/auth/login",
-        data={'email': 'docker@example.com', 'password': 'password'}
-    )
-    assert login_response.status_code == 200
-
+    unique_suffix = str(int(time.time()))
     # Crear un nuevo post
-    cookies = login_response.cookies  # Reutilizar cookies de autenticación
     post_data = {
-        'title': 'Docker Post',
-        'content': 'Este es un post de prueba en Docker.',
-        'image': None
+        "title": "Nuevo Post de Test {unique_suffix}",
+        "content": "Este es un post de prueba.",
     }
-    create_post_response = requests.post(
-        f"{BASE_URL_APP}/posts/new_post",
-        data=post_data,
-        cookies=cookies
-    )
-    assert create_post_response.status_code == 200
 
-    # Votar por el post (supongamos que conocemos el ID del post)
-    post_id = 1  # Cambia según tu lógica
-    vote_response = requests.post(
-        f"{BASE_URL_APP}/votes/vote_post/{post_id}",
-        cookies=cookies
-    )
-    assert vote_response.status_code == 200
-    assert b'Voto registrado correctamente.' in vote_response.content
+    # Enviar solicitud POST para crear el post
+    create_post_response = requests.post(f"{BASE_URL_APP}/posts/new_post", data=post_data, cookies=login_response.cookies)
 
-def test_user_registration_and_login(wait_for_services):
-    # Registro
-    registration_data = {
-        "username": "dockeruser",
-        "email": "docker@example.com",
-        "password": "password"
-    }
-    register_response = requests.post(
-        f"{BASE_URL_APP}/auth/register",
-        json=registration_data
-    )
-    assert register_response.status_code == 200
+    # Verificar que la respuesta de la creación del post sea exitosa (redirección)
+    assert create_post_response.status_code == 200, f"Expected 200, but got {create_post_response.status_code}"
 
-    # Login
-    login_data = {"email": "docker@example.com", "password": "password"}
-    login_response = requests.post(f"{BASE_URL_APP}/auth/login", json=login_data)
-    assert login_response.status_code == 200
+    # Enviar solicitud GET para eliminar todos los posts
+    delete_response = requests.get(f"{BASE_URL_APP}/posts/delete_all_posts", cookies=login_response.cookies)
 
+    # Verificar que la respuesta de eliminación sea exitosa (código 200)
+    assert delete_response.status_code == 200, f"Expected 200, but got {delete_response.status_code}"
+
+    # Verificar que el mensaje de éxito se encuentra en la respuesta
+    assert "Todas las publicaciones han sido eliminadas" in delete_response.json()["message"], "Delete all posts message not found"

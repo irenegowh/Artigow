@@ -45,15 +45,16 @@ def list_posts():
         logger.error(f"Error al listar publicaciones: {e}")
         abort(500)
 
-@posts_bp.route('/delete_all_posts', methods=['GET'])
+@posts_bp.route('/delete_all_posts/<string:username>', methods=['GET'])
 @login_required
-def delete_all_posts():
-    logger.info(f"Usuario {current_user.username} accedió a borrar sus publicaciones.")
+def delete_all_posts(username):
+    logger.info(f"Usuario {username} accedió a borrar sus publicaciones.")
     try:
-        delete_all_user_posts(current_user.username)
-        return jsonify({"message": "Todas las publicaciones han sido eliminadas."}), 200
+        # Llamar al servicio para eliminar todas las publicaciones del usuario proporcionado
+        delete_all_user_posts(username)
+        return jsonify({"message": f"Todas las publicaciones del usuario {username} han sido eliminadas."}), 200
     except ValueError as e:
-        logger.error(f"Error al eliminar publicaciones: {e}")
+        logger.error(f"Error al eliminar publicaciones para el usuario {username}: {e}")
         abort(500)
 
 @posts_bp.route('/show_post/<int:post_id>', methods=['POST'])
