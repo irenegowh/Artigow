@@ -20,11 +20,19 @@ jobs:
       with:
         python-version: '3.12'
 
-    # Nuevo paso: Instalar Docker Compose
+    # Instalar Docker Compose
     - name: Install Docker Compose
       run: |
         sudo apt-get update
         sudo apt-get install -y docker-compose
+
+    # Autenticarse en GitHub Container Registry (GHCR)
+    - name: Log in to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ secrets.GITHUB_ACTOR }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Install pipenv
       run: pip install pipenv
@@ -32,9 +40,15 @@ jobs:
     - name: Install dependencies
       run: pipenv install --dev
 
+    # Levantar los contenedores con Docker Compose
+    - name: Start Docker containers
+      run: docker-compose up -d
+
+    # Ejecutar tests
     - name: Run tests
       run: pipenv run pytest --junitxml=report.xml
 
+    # Subir informe de tests
     - name: Upload test report
       if: always()
       uses: actions/upload-artifact@v3
