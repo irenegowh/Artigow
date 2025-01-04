@@ -17,29 +17,35 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Login a GitHub Container Registry (ghcr.io)
+      # 2. Login a GitHub Container Registry
       - name: Log in to GitHub Container Registry
         run: echo "${{ secrets.CR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      # 3. Set up Python
+      # 3. Instalar Docker Compose
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      # 4. Configurar Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.12'
 
-      # 4. Instalar pipenv
+      # 5. Instalar pipenv
       - name: Install pipenv
         run: pip install pipenv
 
-      # 5. Instalar dependencias
+      # 6. Instalar dependencias
       - name: Install dependencies
         run: pipenv install --dev
 
-      # 6. Ejecutar pruebas
+      # 7. Ejecutar pruebas
       - name: Run tests
         run: pipenv run pytest --junitxml=report.xml
 
-      # 7. Subir informe de pruebas
+      # 8. Subir informe de pruebas
       - name: Upload test report
         if: always()
         uses: actions/upload-artifact@v3
