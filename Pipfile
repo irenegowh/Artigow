@@ -18,6 +18,7 @@ marshmallow = "*"
 [dev-packages]
 pytest = "*"
 flask-testing = "*"
+requests = "*"
 
 [requires]
 python_version = "3.12"
