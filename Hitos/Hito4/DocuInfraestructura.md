@@ -15,6 +15,8 @@ los datos principales de la aplicación y otra para los logs.
 3. logs_service: Microservicio para el procesamiento y visualización 
 de logs.
 
+Los archivos de los contenedores se han guardado en el repositorio en un directorio especifico ([Directorio app/container_h4_Simple/](app/container_h4_Simple/))
+
 ![](imagenes/tree1.png)
 
 ![](imagenes/tree2.png)
