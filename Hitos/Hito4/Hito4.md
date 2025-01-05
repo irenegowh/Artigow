@@ -1,4 +1,5 @@
-Introducción al Hito 4: Composición de Servicios con Docker Compose
+# Hito 4: Composición de servicios
+## Introducción:
 En el Hito 4 se aborda el diseño e implementación de un clúster de contenedores utilizando Docker Compose. El objetivo principal es crear una infraestructura modular y reproducible que permita desplegar aplicaciones compuestas por múltiples servicios interconectados.
 
 En esta etapa, se desarrolla un sistema basado en contenedores que incluye:
