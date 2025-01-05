@@ -1,5 +1,5 @@
 # Explicación breve de los tests de integración continua y conectividad entre contenedores
-En el archivo [Dockerfile de db_service](../../tests/test_app.py) se han configurado nuevos tests para el entorno dockerizado, manteniendo los tests de la aplicación monolítica.
+En el archivo [test_app.py](../../tests/test_app.py) se han configurado nuevos tests para el entorno dockerizado, manteniendo los tests de la aplicación monolítica.
 Estos tests verifican el correcto funcionamiento y la integración de los servicios desplegados en el clúster de contenedores definido con Docker Compose. Se centran en validar tanto la conectividad como las funcionalidades clave de cada contenedor.
 Como propósito general de los tests estariía:
 1. Integración continua: Garantizan que los servicios funcionan de manera conjunta en el entorno dockerizado.
