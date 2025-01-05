@@ -1,8 +1,10 @@
-# Documentación y justificación de la configuración de cada uno de los 
-contenedores
+# Documentación y justificación de la configuración de cada uno de los contenedores
+En esta sección explico los siguientes puntos de los tres contenedores:
+- Descripción del servicio
+- Configuración del contenedor
+- Justificación de la configuración personalizada
+- Puerto expuesto y justificación
 
-## DB_SERVICE
-###  Descripción del servicio
-El contenedor db_service utiliza una configuración personalizada para implementar un servidor PostgreSQL que administra dos bases de datos específicas:
-1. Base de datos principal (artigow_db): Usada por el servicio principal de la aplicación (app_service) para manejar sus datos.
-2. Base de datos de logs (artigow_logs_db): Usada por el servicio de logs (logs_service) para almacenar los registros generados por la aplicación.
+[1. db_service - Configuración y justificación del contenedor.](DB_SERVICE.md)
+[2. logs_service - Configuración y justificación del contenedor.](LOGS_SERVICE.md)
+[3. app_service - Configuración y justificación del contenedor.](APP_SERVICE.md)
