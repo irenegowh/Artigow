@@ -14,3 +14,7 @@ negocio de la aplicación Artigow.
 los datos principales de la aplicación y otra para los logs.
 3. logs_service: Microservicio para el procesamiento y visualización 
 de logs.
+
+![](imagenes/tree1.png)
+
+![](imagenes/tree2.png)
