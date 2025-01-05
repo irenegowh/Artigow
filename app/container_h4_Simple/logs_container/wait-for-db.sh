@@ -7,3 +7,5 @@ until PGPASSWORD=$POSTGRES_PASSWORD psql -h db_service -U $POSTGRES_USER -d $POS
 done
 
 echo "Base de datos lista, iniciando la aplicación..."
+
+
