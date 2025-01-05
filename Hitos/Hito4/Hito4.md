@@ -10,10 +10,10 @@ Un servicio para la gestión y almacenamiento de logs.
 Se busca garantizar que la solución propuesta sea escalable, segura y fácilmente desplegable tanto en entornos locales como en producción. Para lograrlo, se utilizan herramientas estándar como Dockerfile, docker-compose.yaml, y se integra la automatización mediante GitHub Packages para la gestión y distribución de imágenes de contenedores.
 
 
-[Documentación y justificación de la estructura del clúster de contenedores.](Hitos/Hito4/DocuInfraestructura.md)
+[Documentación y justificación de la estructura del clúster de contenedores.](DocuInfraestructura.md)
 
-[Documentación y justificación de la configuración de cada uno de los contenedores.](Hitos/Hito4/DocuContenedores.md)
+[Documentación y justificación de la configuración de cada uno de los contenedores.](DocuContenedores.md)
 
-[Documentación de GitHub Packages.](Hitos/Hito4/DocuGithubPackages.md)
+[Documentación de GitHub Packages.](DocuGithubPackages.md)
 
-[Documentación de tests.](Hitos/Hito4/DocuTests.md)
+[Documentación de tests.](DocuTests.md)
