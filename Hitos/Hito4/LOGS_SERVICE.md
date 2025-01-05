@@ -1,4 +1,4 @@
-# Contenedor log_service
+# Contenedor log_service [Dockerfile de logs_service](../../app/container_h4_Simple/logs_container/Dockerfile)
 
 ## Descripción del servicio
 El contenedor logs_service implementa un microservicio basado en Flask, diseñado para recibir y gestionar logs de aplicaciones en una base de datos PostgreSQL. Este servicio se encuentra integrado dentro de una arquitectura de microservicios, interactuando con los otros componentes, como la base de datos en el contenedor db_services y el servicio de la aplicación (app_service).
