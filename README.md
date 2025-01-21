@@ -14,4 +14,4 @@ El objetivo principal es ofrecer una plataforma para fomentar la interacción ar
 
 [Hito 3: Microservicios.](Hitos/Hito3/Hito3.md)
 
-[Hito 4: Composición de Servicios.](Hitos/Hito3/Hito3.md)
+[Hito 4: Composición de Servicios.](Hitos/Hito4/Hito4.md)
