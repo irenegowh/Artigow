@@ -1,6 +1,6 @@
 #*************************#
 # Configuracion en local  #
-#*************************#
+#*************************
 class Config:
     SECRET_KEY = 'xxxxyyyyyzzzzz'
     SQLALCHEMY_DATABASE_URI = 'postgresql://user:password@db_service:5432/artigow_db'
