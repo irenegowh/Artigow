@@ -14,30 +14,18 @@ login_manager = LoginManager()
 
 def create_app(config_class=None):
     app = Flask(__name__)
+    # Si no se pasa un config_class, carga la configuración según el entorno
     if config_class:
         app.config.from_object(config_class)
-    elif app.config['TESTING']:
-        app.config.from_object('config.TestConfig')
     else:
-        app.config.from_object('config.Config')
-   
-    setup_logging()  # Inicializa el sistema de logging
-    logger = logging.getLogger("app_logger")
-    logger.info("Aplicación inicializada")
-    
-    db.init_app(app)
-    migrate = Migrate(app, db)
+        environment = os.getenv('FLASK_ENV', 'local')
+        if environment == 'production':
+            app.config.from_object('config.RenderConfig')  # Cargar la configuración de producción
+        elif environment == 'testing':
+            app.config.from_object('config.TestConfig')  # Cargar la configuración de prueba
+        else:
+            app.config.from_object('config.LocalConfig')  # Cargar la configuración local
 
-    login_manager.init_app(app)
-    login_manager.login_view = 'auth.login'
-        
-    # Registrar Blueprints
-    from app.routes import main_bp, auth_bp, posts_bp, votes_bp, users_bp
-    app.register_blueprint(main_bp)
-    app.register_blueprint(auth_bp, url_prefix='/auth')
-    app.register_blueprint(posts_bp, url_prefix='/posts')
-    app.register_blueprint(votes_bp, url_prefix='/votes')
-    app.register_blueprint(users_bp, url_prefix='/user')
 
     @app.errorhandler(Exception)
     def handle_exception(e):
