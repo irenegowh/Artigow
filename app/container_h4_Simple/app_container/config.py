@@ -12,8 +12,9 @@ class LocalConfig(Config):
 
 # Configuración para Render (Producción)
 class RenderConfig(Config):
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')  # Render proporciona DATABASE_URL automáticamente
-    print(f"DATABASE_URL: {os.getenv('DATABASE_URL')}")
+    DATABASE_URL = os.getenv('DATABASE_URL')
+    print(f"DATABASE_URL: {DATABASE_URL}")  # Verificar si DATABASE_URL tiene un valor correcto
+    SQLALCHEMY_DATABASE_URI = DATABASE_URL
 
 # Configuración para pruebas
 class TestConfig(Config):
