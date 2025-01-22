@@ -15,6 +15,7 @@ class RenderConfig(Config):
     DATABASE_URL = os.getenv('DATABASE_URL')
     print(f"DATABASE_URL: {DATABASE_URL}")  # Verificar si DATABASE_URL tiene un valor correcto
     SQLALCHEMY_DATABASE_URI = DATABASE_URL
+    print(f"{FLASK_ENV}")
 
 # Configuración para pruebas
 class TestConfig(Config):
