@@ -1,10 +1,7 @@
-# app/__init__.py
-
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
-from app.logs import setup_logging
 from flask import jsonify
 import logging
 import os
@@ -14,18 +11,23 @@ login_manager = LoginManager()
 
 def create_app(config_class=None):
     app = Flask(__name__)
-    # Si no se pasa un config_class, carga la configuración según el entorno
+
+    # Configuración de la app (esto lo tienes bien)
     if config_class:
         app.config.from_object(config_class)
     else:
         environment = os.getenv('FLASK_ENV', 'local')
         if environment == 'production':
-            app.config.from_object('config.RenderConfig')  # Cargar la configuración de producción
+            app.config.from_object('config.RenderConfig')
         elif environment == 'testing':
-            app.config.from_object('config.TestConfig')  # Cargar la configuración de prueba
+            app.config.from_object('config.TestConfig')
         else:
-            app.config.from_object('config.LocalConfig')  # Cargar la configuración local
+            app.config.from_object('config.LocalConfig')
 
+    # Inicializar las extensiones
+    db.init_app(app)  # Aquí es donde se registra SQLAlchemy con la app
+    login_manager.init_app(app)
+    Migrate(app, db)  # Inicializa Flask-Migrate para manejar las migraciones de la base de datos
 
     @app.errorhandler(Exception)
     def handle_exception(e):
@@ -38,9 +40,3 @@ def create_app(config_class=None):
         return jsonify({"error": "Recurso no encontrado"}), 404
 
     return app
-
-@login_manager.user_loader
-def load_user(user_id):
-    from app.models import UserProf
-    return UserProf.query.get(int(user_id))  # Carga el usuario por IDs
-
