@@ -5399,3 +5399,45 @@ WHERE ? = votes.post_id]
 [2025-01-22 11:55:25,255] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
 [2025-01-22 11:55:25,316] INFO in __init__: Aplicación inicializada
 [2025-01-22 11:55:25,328] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-22 13:13:30,831] INFO in __init__: Aplicación inicializada
+[2025-01-22 13:13:30,986] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-22 13:13:31,308] INFO in __init__: Aplicación inicializada
+[2025-01-22 13:13:31,345] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-22 13:13:31,351] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-22 13:13:31,370] INFO in __init__: Aplicación inicializada
+[2025-01-22 13:13:31,580] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-22 13:13:31,749] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-22 13:13:31,751] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-22 13:13:31,764] INFO in votes: Usuario testuser está votando por el post 1.
+[2025-01-22 13:13:31,768] INFO in votes_service: Voto agregado para el post 1 por el usuario testuser.
+[2025-01-22 13:13:31,769] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-22 13:13:31,771] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-22 13:13:31,787] INFO in __init__: Aplicación inicializada
+[2025-01-22 13:13:31,950] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-22 13:13:32,105] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-22 13:13:32,107] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-22 13:13:32,118] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-22 13:13:32,119] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-22 13:13:32,131] INFO in __init__: Aplicación inicializada
+[2025-01-22 13:13:32,139] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-22 13:19:49,336] INFO in __init__: Aplicación inicializada
+[2025-01-22 13:19:49,468] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-22 13:19:49,731] INFO in __init__: Aplicación inicializada
+[2025-01-22 13:19:49,757] INFO in posts: Acceso al listado de publicaciones.
+[2025-01-22 13:19:49,765] INFO in post_service: Consulta de publicaciones realizada correctamente.
+[2025-01-22 13:19:49,783] INFO in __init__: Aplicación inicializada
+[2025-01-22 13:19:50,016] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-22 13:19:50,234] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-22 13:19:50,234] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-22 13:19:50,246] INFO in votes: Usuario testuser está votando por el post 1.
+[2025-01-22 13:19:50,254] INFO in votes_service: Voto agregado para el post 1 por el usuario testuser.
+[2025-01-22 13:19:50,254] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-22 13:19:50,258] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-22 13:19:50,274] INFO in __init__: Aplicación inicializada
+[2025-01-22 13:19:50,494] INFO in auth_service: Usuario testuser registrado correctamente.
+[2025-01-22 13:19:50,729] INFO in auth_service: Usuario test@example.com inició sesión correctamente.
+[2025-01-22 13:19:50,729] INFO in main: Accediendo a la página principal (bienvenida).
+[2025-01-22 13:19:50,745] INFO in votes: Accediendo a la página de ranking de votos.
+[2025-01-22 13:19:50,749] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
+[2025-01-22 13:19:50,769] INFO in __init__: Aplicación inicializada
+[2025-01-22 13:19:50,777] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
