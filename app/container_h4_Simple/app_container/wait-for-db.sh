@@ -24,6 +24,3 @@ until psql -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME" -p "$DB_PORT" -c '\q'; do
 done
 
 echo "Base de datos lista, iniciando la aplicación..."
-
-
-echo "Base de datos lista, iniciando la aplicación..."
