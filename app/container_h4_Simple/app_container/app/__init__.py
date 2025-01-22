@@ -7,7 +7,7 @@ from flask_migrate import Migrate
 from app.logs import setup_logging
 from flask import jsonify
 import logging
-
+import os
 
 db = SQLAlchemy()
 login_manager = LoginManager()
