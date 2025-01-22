@@ -1,5 +1,7 @@
 from app import create_app, db
+from app.models import UserProf
 
+# Crea la instancia de la aplicación
 app = create_app()
 
 # Ejecutar la creación de las tablas dentro del contexto de la app

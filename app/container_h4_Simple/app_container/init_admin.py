@@ -1,5 +1,5 @@
-from app.models import UserProf
 from app import create_app, db
+from app.models import UserProf
 from werkzeug.security import generate_password_hash  # Este es el método que usaremos para generar la contraseña cifrada
 
 # Crea la instancia de la aplicación
