@@ -3,9 +3,14 @@
 # Espera a que PostgreSQL esté listo para aceptar conexiones
 #until PGPASSWORD=$POSTGRES_PASSWORD psql -h db_service -U $POSTGRES_USER -d $POSTGRES_DB -c '\q'; do
 # Extraer los valores de la variable DATABASE_URL
-#!/bin/sh
 
-# Extraer los valores de la variable DATABASE_URL
+# Extraer los valores de las variables de entorno
+echo "DB_HOST: $DB_HOST"
+echo "DB_USER: $DB_USER"
+echo "DB_PASSWORD: $DB_PASSWORD"
+echo "DB_NAME: $DB_NAME"
+echo "DB_PORT: $DB_PORT"
+
 export PGPASSWORD=$DB_PASSWORD  # Se usa para la conexión de psql
 
 # Espera a que PostgreSQL esté listo para aceptar conexiones
