@@ -5441,3 +5441,5 @@ WHERE ? = votes.post_id]
 [2025-01-22 13:19:50,749] INFO in votes_service: Ranking de publicaciones obtenido correctamente.
 [2025-01-22 13:19:50,769] INFO in __init__: Aplicación inicializada
 [2025-01-22 13:19:50,777] WARNING in __init__: Recurso no encontrado: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2025-01-22 14:05:17,535] INFO in __init__: Aplicación inicializada
+[2025-01-22 14:05:26,159] INFO in __init__: Aplicación inicializada
