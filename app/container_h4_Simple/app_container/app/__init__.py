@@ -31,9 +31,9 @@ def create_app(config_class=None):
 
     # Imprimir todas las rutas registradas
     with app.app_context():
-    print("Rutas registradas en la aplicación:")
-    for rule in app.url_map.iter_rules():
-        print(f"{rule.endpoint}: {rule.rule}")
+        print("Rutas registradas en la aplicación:")
+        for rule in app.url_map.iter_rules():
+            print(f"{rule.endpoint}: {rule.rule}")
 
     @app.errorhandler(Exception)
     def handle_exception(e):
