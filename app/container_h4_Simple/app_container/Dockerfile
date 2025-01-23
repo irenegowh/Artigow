@@ -31,4 +31,6 @@ ENV PYTHONPATH=/app:$PYTHONPATH
 EXPOSE 5000
 
 # Modifica el comando de inicio para verificar si las migraciones existen y crearlas si es necesario
-CMD ["sh", "-c", "/wait-for-db.sh && flask db init || echo 'Migrations already initialized' && flask db upgrade && python /app/init_admin.py && python /app/run.py"]
+CMD ["sh", "-c", "/wait-for-db.sh && flask db init || echo 'Migrations already initialized' && flask db upgrade && python app/run.py"]
+
+CMD ["sh", "-c", "/wait-for-db.sh && flask db init || echo 'Migrations already initialized' && flask db upgrade && python /app/init_admin.py && python -m app.run"]
