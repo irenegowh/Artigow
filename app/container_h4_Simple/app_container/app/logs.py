@@ -19,6 +19,7 @@ class HTTPLogHandler(logging.Handler):
             "message": self.format(record)
         }
         try:
+            print("Enviando log:", log_entry)  # Verifica que se está enviando el log
             requests.post(self.url, json=log_entry)
         except Exception as e:
             print(f"Error enviando log: {e}")
@@ -30,6 +31,7 @@ def setup_logging():
         os.makedirs('logs')
 
     log_url = os.getenv('LOG_SERVICE_URL')
+    print(f"URL del servicio de logs: {log_url}")
 
     logging_config = {
         "version": 1,
