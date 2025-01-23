@@ -29,6 +29,7 @@ def create_app(config_class=None):
     login_manager.init_app(app)
     Migrate(app, db)  # Inicializa Flask-Migrate para manejar las migraciones de la base de datos
 
+
     @app.errorhandler(Exception)
     def handle_exception(e):
         logging.error(f"Error: {e}")
