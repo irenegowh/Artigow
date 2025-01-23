@@ -10,9 +10,9 @@ def create_admin_user():
             admin_user = UserProf(
                 username='admin',
                 email='admin@example.com',
-                role='admin'  # Establece el rol como administrador
+                role='admin'  # Establecer el rol como administrador
             )
-            admin_user.set_password('adminpassword')
+            admin_user.set_password('adminpassword')  # No olvides hashear la contraseña
             db.session.add(admin_user)
             try:
                 db.session.commit()

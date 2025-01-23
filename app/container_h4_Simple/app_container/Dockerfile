@@ -33,4 +33,5 @@ ENV PYTHONPATH=/app:$PYTHONPATH
 EXPOSE 5000
 
 # Comando de inicio: primero espera que la base de datos esté lista, luego aplica migraciones, ejecuta el script de admin y finalmente inicia la app
-CMD ["sh", "-c", "/wait-for-db.sh && flask db upgrade || echo 'No migrations to apply' && python /app/init_admin.py && python -m app.run"]
+CMD ["sh", "-c", "/wait-for-db.sh && flask db upgrade || echo 'No migrations to apply' && python -m app.run & python /app/init_admin.py"]
+
