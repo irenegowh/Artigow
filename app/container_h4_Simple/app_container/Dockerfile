@@ -30,5 +30,6 @@ ENV PYTHONPATH=/app:$PYTHONPATH
 # Expón el puerto en el que se ejecuta la app
 EXPOSE 5000
 
-# Comando de inicio
-CMD ["sh", "-c", "/wait-for-db.sh && flask db upgrade && python /app/init_admin.py && flask run --host=0.0.0.0"]
+# Modifica el comando de inicio para verificar si las migraciones existen y crearlas si es necesario
+CMD ["sh", "-c", "/wait-for-db.sh && flask db init || echo 'Migrations already initialized' && flask db upgrade && python /app/init_admin.py && flask run --host=0.0.0.0"]
+
