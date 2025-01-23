@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 # Configuración de la base de datos
-DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://user:password@db_service:5432/artigow_logs_db')
+DATABASE_URL = os.getenv('DATABASE_URL')  # Asume que Render ya expone DATABASE_URL directamente
 TABLE_NAME = 'application_logs'
 
 
