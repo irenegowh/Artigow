@@ -6,26 +6,33 @@ import os
 app = Flask(__name__)
 
 # Configuración de la base de datos
-DATABASE_URL = os.getenv('DATABASE_URL')  # Asume que Render ya expone DATABASE_URL directamente
+DATABASE_URL = os.getenv('DATABASE_URL')  # Render proporciona DATABASE_URL
+if not DATABASE_URL:
+    raise RuntimeError("La variable de entorno DATABASE_URL no está definida")
+
 TABLE_NAME = 'application_logs'
 
 
 def init_db():
     """Crea la tabla para los logs si no existe."""
-    conn = psycopg2.connect(DATABASE_URL)
-    cursor = conn.cursor()
-    cursor.execute(sql.SQL(f"""
-        CREATE TABLE IF NOT EXISTS {TABLE_NAME} (
-            id SERIAL PRIMARY KEY,
-            timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            level VARCHAR(10),
-            module VARCHAR(50),
-            message TEXT
-        )
-    """))
-    conn.commit()
-    cursor.close()
-    conn.close()
+    try:
+        conn = psycopg2.connect(DATABASE_URL)
+        cursor = conn.cursor()
+        cursor.execute(sql.SQL(f"""
+            CREATE TABLE IF NOT EXISTS {TABLE_NAME} (
+                id SERIAL PRIMARY KEY,
+                timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                level VARCHAR(10),
+                module VARCHAR(50),
+                message TEXT
+            )
+        """))
+        conn.commit()
+        cursor.close()
+        conn.close()
+    except Exception as e:
+        print(f"Error al inicializar la base de datos: {e}")
+        raise
 
 
 @app.route('/log', methods=['POST'])
@@ -36,7 +43,6 @@ def receive_log():
     module = data.get('module')
     message = data.get('message')
 
-    # Validar datos recibidos
     if not (level and module and message):
         return jsonify({"error": "Datos incompletos"}), 400
 
@@ -67,22 +73,12 @@ def run_query():
     try:
         conn = psycopg2.connect(DATABASE_URL)
         cursor = conn.cursor()
-        
-        # Ejecutar la consulta
         cursor.execute(query)
-
-        # Obtener los resultados
         rows = cursor.fetchall()
-
-        # Obtener los nombres de las columnas
         columns = [desc[0] for desc in cursor.description]
-
-        # Convertir las filas en un diccionario con las columnas como claves
         result = [dict(zip(columns, row)) for row in rows]
-
         cursor.close()
         conn.close()
-
         return jsonify(result)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -91,8 +87,9 @@ def run_query():
 @app.route('/', methods=['GET'])
 def consulta_form():
     """Sirve el formulario HTML para hacer consultas SQL."""
-    return render_template('logs_service.html')  # Asegúrate de que el archivo HTML está en la carpeta 'templates'
+    return render_template('logs_service.html')
+
 
 if __name__ == '__main__':
-    init_db()  # Crear la tabla al iniciar
+    init_db()
     app.run(host='0.0.0.0', port=5003)
