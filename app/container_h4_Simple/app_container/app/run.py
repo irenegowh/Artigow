@@ -1,6 +1,6 @@
 from app import create_app, db
 from app.models import UserProf
-from ..logs import setup_logging
+from app.logs import setup_logging
 import os 
 
 app = create_app()
