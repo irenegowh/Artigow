@@ -1,9 +1,7 @@
-from flask import Flask, jsonify
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
-from .routes import main_bp, auth_bp, posts_bp, votes_bp, users_bp
-import logging
 import os
 
 # Inicialización global de extensiones
@@ -31,8 +29,8 @@ def create_app(config_class=None):
     login_manager.init_app(app)
     migrate.init_app(app, db)
 
-
-
+    # Registrar blueprints
+    from .routes import main_bp, auth_bp, posts_bp, votes_bp, users_bp
     app.register_blueprint(main_bp)  # Ruta raíz
     app.register_blueprint(auth_bp, url_prefix='/auth')  # Autenticación
     app.register_blueprint(posts_bp, url_prefix='/posts')  # Publicaciones
@@ -42,12 +40,10 @@ def create_app(config_class=None):
     # Registrar manejadores de errores
     @app.errorhandler(Exception)
     def handle_exception(e):
-        logging.error(f"Error: {e}")
-        return jsonify({"error": str(e)}), 500
+        return {"error": str(e)}, 500
 
     @app.errorhandler(404)
     def not_found_error(e):
-        logging.warning(f"Recurso no encontrado: {e}")
-        return jsonify({"error": "Recurso no encontrado"}), 404
+        return {"error": "Recurso no encontrado"}, 404
 
     return app
