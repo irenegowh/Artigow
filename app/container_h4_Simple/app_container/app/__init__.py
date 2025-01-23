@@ -29,6 +29,14 @@ def create_app(config_class=None):
     login_manager.init_app(app)
     migrate.init_app(app, db)
 
+    # Establecer la URL de inicio de sesión (puedes personalizarla)
+    login_manager.login_view = 'auth.login'  # Ajusta a la vista de login de tu app si es necesario
+
+    # Definir el user_loader para Flask-Login
+    @login_manager.user_loader
+    def load_user(user_id):
+        return UserProf.query.get(int(user_id))  # Cambia 'UserProf' por tu clase de usuario
+
     # Registrar blueprints
     from .routes import main_bp, auth_bp, posts_bp, votes_bp, users_bp
     app.register_blueprint(main_bp)  # Ruta raíz
