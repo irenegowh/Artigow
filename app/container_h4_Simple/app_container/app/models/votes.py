@@ -27,24 +27,20 @@ class Vote(db.Model):
 
     @staticmethod
     def create_vote():
-        # Obtener datos del cuerpo JSON de la solicitud
         data = request.get_json()
         post_id = data.get('post_id')
         user_id = current_user.id
-        created_at = data.get('created_at', datetime.utcnow())
 
-        # Verifica si ya existe un voto de este usuario para el mismo post
-        existing_vote = Vote.query.filter_by(post_id=post_id, user_id=user_id).first()
-        if existing_vote:
+        new_vote = Vote(post_id=post_id, user_id=user_id)
+
+        try:
+            db.session.add(new_vote)
+            db.session.commit()
+            return jsonify({'message': 'Voto creado', 'vote': {
+                'post_id': new_vote.post_id,
+                'user_id': new_vote.user_id,
+                'created_at': new_vote.created_at
+            }}), 201
+        except IntegrityError:
+            db.session.rollback()
             return jsonify({'message': 'Ya has votado por este post.'}), 400
-
-        # Crear y guardar el nuevo Voto
-        new_vote = Vote(post_id=post_id, user_id=user_id, created_at=created_at)
-        db.session.add(new_vote)
-        db.session.commit()
-
-        return jsonify({'message': 'Voto creado', 'vote': {
-            'post_id': new_vote.post_id,
-            'user_id': new_vote.user_id,
-            'created_at': new_vote.created_at
-        }}), 201

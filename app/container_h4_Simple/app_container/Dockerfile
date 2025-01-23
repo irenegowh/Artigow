@@ -22,6 +22,11 @@ RUN pip install -r requirements.txt
 # Instalar Flask-Migrate y psycopg2-binary si no están ya en requirements.txt
 RUN pip install flask-migrate psycopg2-binary
 
+# Migraciones
+RUN if [ ! -d "/app/migrations" ]; then flask db init; fi
+RUN flask db migrate -m "Initial migration"
+RUN flask db upgrade
+
 # Copiar el script de espera para la base de datos
 COPY wait-for-db.sh /wait-for-db.sh
 RUN chmod +x /wait-for-db.sh
