@@ -1,4 +1,4 @@
-from . import db  # Importa la instancia de SQLAlchemy desde app.py
+from app import db  # Importa la instancia de SQLAlchemy desde app.py
 from flask import request, jsonify  # Asegúrate de importar request y jsonify
 from datetime import datetime, timezone
 from sqlalchemy import Column, Integer, String, Text, DateTime  # Importa Column y tipos necesarios

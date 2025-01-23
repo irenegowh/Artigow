@@ -46,4 +46,7 @@ def create_app(config_class=None):
     def not_found_error(e):
         return {"error": "Recurso no encontrado"}, 404
 
+    # Importar modelos después de la inicialización
+    from .models import UserProf, Post, Vote 
+    
     return app

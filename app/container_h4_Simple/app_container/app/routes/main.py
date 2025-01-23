@@ -2,6 +2,7 @@
 from flask import Blueprint, render_template
 import os
 from flask import Flask
+from app import create_app, db
 from app.models import Post, Vote
 from flask import render_template
 import logging
