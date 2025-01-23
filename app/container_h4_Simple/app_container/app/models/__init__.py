@@ -1,6 +1,6 @@
 # app/models/__init__.py
-from flask_sqlalchemy import SQLAlchemy
-db = SQLAlchemy()
+from flask import current_app
+from app import db
 
 from .posts import Post
 from .votes import Vote
