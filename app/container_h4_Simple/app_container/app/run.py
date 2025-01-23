@@ -3,6 +3,7 @@ from app.models import UserProf
 import os 
 
 app = create_app()
+setup_logging()
 
 # Crear las tablas dentro del contexto de la app
 with app.app_context():
