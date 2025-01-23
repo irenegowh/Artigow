@@ -1,7 +1,7 @@
 # Usa una imagen base de Python
 FROM python:3.12-slim
 
-# Instalar dependencias para `psql` (cliente de PostgreSQL)
+# Instalar dependencias para psql (cliente de PostgreSQL)
 RUN apt-get update && apt-get install -y postgresql-client
 
 # Establece el directorio de trabajo dentro del contenedor
@@ -31,5 +31,4 @@ ENV PYTHONPATH=/app:$PYTHONPATH
 EXPOSE 5000
 
 # Modifica el comando de inicio para verificar si las migraciones existen y crearlas si es necesario
-CMD ["sh", "-c", "/wait-for-db.sh && flask db init || echo 'Migrations already initialized' && flask db upgrade && python /app/init_admin.py && flask run --host=0.0.0.0"]
-
+CMD ["sh", "-c", "/wait-for-db.sh && flask db init || echo 'Migrations already initialized' && flask db upgrade && python /app/init_admin.py && python /app/run.py"]
