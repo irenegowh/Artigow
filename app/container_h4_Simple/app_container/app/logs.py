@@ -30,7 +30,7 @@ def setup_logging():
     if not os.path.exists('logs'):
         os.makedirs('logs')
 
-    log_url = os.getenv('LOG_SERVICE_URL')
+    log_url = os.getenv('LOG_SERVICE_URL') + '/log'
     print(f"URL del servicio de logs: {log_url}")
 
     logging_config = {
