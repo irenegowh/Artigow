@@ -14,7 +14,7 @@ class LocalConfig(Config):
 class RenderConfig(Config):
     DATABASE_URL_SQLALCHEMY = os.getenv('DATABASE_URL_SQLALCHEMY')
     print(f"DATABASE_URL_SQLALCHEMY: {DATABASE_URL_SQLALCHEMY}")  # Verificar si DATABASE_URL tiene un valor correcto    
-    SQLALCHEMY_DATABASE_URI = DATABASE_URL_SQLALCHEMY
+    SQLALCHEMY_DATABASE_URI = str(DATABASE_URL_SQLALCHEMY)
     print(f"{os.getenv('FLASK_ENV')}")
 
 # Configuración para prebas
