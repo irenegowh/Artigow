@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
-from flask import jsonify
+from .routes import main_bp, auth_bp, posts_bp, votes_bp, users_bp  # Importar los blueprints
 import logging
 import os
 
@@ -12,7 +12,7 @@ login_manager = LoginManager()
 def create_app(config_class=None):
     app = Flask(__name__)
 
-    # Configuración de la app (esto lo tienes bien)
+    # Configuración de la app
     if config_class:
         app.config.from_object(config_class)
     else:
@@ -25,16 +25,18 @@ def create_app(config_class=None):
             app.config.from_object('config.LocalConfig')
 
     # Inicializar las extensiones
-    db.init_app(app)  # Aquí es donde se registra SQLAlchemy con la app
+    db.init_app(app)
     login_manager.init_app(app)
-    Migrate(app, db)  # Inicializa Flask-Migrate para manejar las migraciones de la base de datos
+    Migrate(app, db)
 
-    # Imprimir todas las rutas registradas
-    with app.app_context():
-        print("Rutas registradas en la aplicación:")
-        for rule in app.url_map.iter_rules():
-            print(f"{rule.endpoint}: {rule.rule}")
+    # Registrar los blueprints
+    app.register_blueprint(main_bp)  # Ruta raíz
+    app.register_blueprint(auth_bp, url_prefix='/auth')  # Autenticación
+    app.register_blueprint(posts_bp, url_prefix='/posts')  # Publicaciones
+    app.register_blueprint(votes_bp, url_prefix='/votes')  # Votaciones
+    app.register_blueprint(users_bp, url_prefix='/users')  # Usuarios
 
+    # Registrar manejadores de errores
     @app.errorhandler(Exception)
     def handle_exception(e):
         logging.error(f"Error: {e}")
