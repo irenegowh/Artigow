@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
+from .routes import main_bp, auth_bp, posts_bp, votes_bp, users_bp
 import logging
 import os
 
@@ -30,12 +31,7 @@ def create_app(config_class=None):
     login_manager.init_app(app)
     migrate.init_app(app, db)
 
-    # Importar y registrar los blueprints
-    from .routes.main import main_bp
-    from .routes.auth import auth_bp
-    from .routes.posts import posts_bp
-    from .routes.votes import votes_bp
-    from .routes.users import users_bp
+
 
     app.register_blueprint(main_bp)  # Ruta raíz
     app.register_blueprint(auth_bp, url_prefix='/auth')  # Autenticación
