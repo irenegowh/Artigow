@@ -9,4 +9,6 @@ with app.app_context():
 
 # Ejecutar la app
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    # Obtén el puerto desde la variable de entorno o usa 5000 por defecto
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
