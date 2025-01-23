@@ -29,6 +29,11 @@ def create_app(config_class=None):
     login_manager.init_app(app)
     Migrate(app, db)  # Inicializa Flask-Migrate para manejar las migraciones de la base de datos
 
+    # Imprimir todas las rutas registradas
+    with app.app_context():
+    print("Rutas registradas en la aplicación:")
+    for rule in app.url_map.iter_rules():
+        print(f"{rule.endpoint}: {rule.rule}")
 
     @app.errorhandler(Exception)
     def handle_exception(e):
